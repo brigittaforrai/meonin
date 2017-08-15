@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import router from './../router';
 import DATA from './../data/texts.js';
-// import fb from './../firebase.js';
 
 Vue.use(Vuex);
 
@@ -12,13 +11,14 @@ export default new Vuex.Store({
     selectedProduct: '',
     productObject: {},
     productNames: ['nana', 'nomad', 'contour', 'sideboard', 'whole', 'uhuu'],
+    language: 'eng'
   },
 
   getters: {
     g_selectedProduct(state) {
       return state.selectedProduct;
     },
-    g_productObjects(state) {
+    g_productObject(state) {
       return state.productObject;
     },
     g_menuList(state) {
@@ -33,6 +33,9 @@ export default new Vuex.Store({
       } else {
         return state.productNames;
       }
+    },
+    g_language: (state) => {
+      return state.language;
     }
   },
 
@@ -45,6 +48,9 @@ export default new Vuex.Store({
         }
       })
     },
+    m_changeLanguage: (state) => {
+      state.language = state.language === 'eng' ? 'hun' : 'eng';
+    }
   },
 
   actions: {

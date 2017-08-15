@@ -5,14 +5,14 @@
     <div class="container">
       <div class="productCategory">
         <h1 class="categoryName">{{product.title}}</h1>
-
       </div>
-      <div class="content" v-if="product.title == 'sideboard'">
-        <article v-for="image in product.images">
-          <img class="image" :src="imagePath(image)"></img>
+
+      <div class="content">
+        <article v-for="item in product.content">
+          <img class="image" :src="imagePath(item.image, product.title)"></img>
           <div class="text">
-            <h2></h2>
-            <p></p>
+            <h2>{{item[language].title}}</h2>
+            <p>{{item[language].text}}</p>
           </div>
         </article>
       </div>
@@ -24,18 +24,17 @@
 import SideMenu from './SideMenu.vue';
 export default {
   name: 'product',
-  data: function() {
-    return {
-    }
-  },
   computed: {
     product: function() {
-      return this.$store.getters.g_productObjects;
+      return this.$store.getters.g_productObject;
     },
+    language: function() {
+      return this.$store.getters.g_language;
+    }
   },
   methods: {
-    imagePath: function(image) {
-      return require('./../assets/images/sideboard/' + image);
+    imagePath: function(image, title) {
+      return require('./../assets/images/' + title + '/' + image);
     },
   },
   components: {
@@ -66,9 +65,22 @@ export default {
         text-transform: uppercase;
       }
     }
-    img {
-      width: 100%;
-      height: auto;
+    .content {
+      article {
+        color: gray;
+        img {
+          width: 100%;
+          height: auto;
+        }
+        .text {
+          h2 {
+            color: gray;
+          }
+          p {
+            color: gray;
+          }
+        }
+      }
     }
   }
 }

@@ -16,7 +16,7 @@
           <router-link to="/contact" class="link">contact</router-link>
         </li>
         <li class="menu-elem lang">
-          hun
+          <a @click="setLanguage()">{{language}}</a>
         </li>
       </ul>
     </div>
@@ -24,8 +24,8 @@
     <canvas @click="selectProduct('sideboard')"></canvas>
 
     <div class="description-box" v-if="datatext">
-      <h2 class="title">{{datatext.title}}</h2>
-      <p class="text">{{datatext.text}}</p>
+      <h2 class="title">{{datatext.hun.title}}</h2>
+      <p class="text">{{datatext.hun.text}}</p>
     </div>
 
   </div>
@@ -39,12 +39,17 @@ export default {
   computed: {
     datatext: function() {
       return DATA.pages.home.content[0];
+    },
+    language: function() {
+      return this.$store.getters.g_language;
     }
   },
   methods: {
     selectProduct: function(productName) {
-      // this.$store.commit('m_selectProduct', productName);
       this.$router.push('products/' + productName);
+    },
+    setLanguage: function() {
+      this.$store.commit('m_changeLanguage');
     }
   },
 }
@@ -111,6 +116,9 @@ export default {
             color: white;
             text-decoration: none;
           }
+        }
+        .lang {
+          cursor: pointer;
         }
       }
     }

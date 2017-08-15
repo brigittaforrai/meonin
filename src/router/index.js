@@ -31,7 +31,6 @@ export default new Router({
       name: 'Products',
       component: Product,
       beforeEnter: (to, from, next) => {
-        console.log(to.params, 'params');
         store.commit('m_selectProduct', to.params.productId);
         next();
       }
