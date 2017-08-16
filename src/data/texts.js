@@ -2,6 +2,10 @@ export default {
   pages: {
     home: {
       title: 'Home',
+      menu: {
+        hun: ['rólunk', 'kontakt'],
+        eng: ['about', 'contact']
+      },
       content: [
         {
           hun :{
@@ -9,7 +13,7 @@ export default {
             text: 'A Lorem Ipsum egy egyszerû szövegrészlete, szövegutánzata a betûszedõ és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban; mikor egy ismeretlen nyomdász összeállította a betûkészletét és egy példa-könyvet vagy szöveget nyomott papírra, ezt használta.'
           },
           eng: {
-            title: 'ENGLISH TITLE',
+            title: 'English Title',
             text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
           }
         }

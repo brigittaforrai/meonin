@@ -3,7 +3,9 @@
 
     <div class="header">
       <div class="logo-container">
-        <div class="logo"></div>
+        <div class="logo">
+          <icon class="logo-svg" width="65" height="65" :glyph="logo"></icon>
+        </div>
         <div class="logo-text">
           <p>collection<br>of<br>simple<br>elements</p>
         </div>
@@ -21,7 +23,9 @@
       </ul>
     </div>
 
-    <canvas @click="selectProduct('sideboard')"></canvas>
+    <div class="graphics-container">
+      <graphics v-on:select="selectProduct"></graphics>
+    </div>
 
     <div class="description-box" v-if="datatext">
       <h2 class="title">{{datatext.hun.title}}</h2>
@@ -33,9 +37,17 @@
 
 <script>
 import DATA from './../data/texts.js';
+import icon from './icon.vue';
+import graphics from './productGraphics.vue';
+import logo from "./../assets/meonin-logo2.svg";
 
 export default {
   name: 'Home',
+  data: function() {
+    return {
+      logo
+    }
+  },
   computed: {
     datatext: function() {
       return DATA.pages.home.content[0];
@@ -52,6 +64,10 @@ export default {
       this.$store.commit('m_changeLanguage');
     }
   },
+  components: {
+    graphics,
+    icon
+  }
 }
 </script>
 
@@ -77,10 +93,14 @@ export default {
           width: 75px;
           background-color: white;
           height: 100%;
-          background-image: url("./../assets/meonin-logo2.svg");
-          background-position: 50% 95%;
-          background-size: 85%;
-          background-repeat: no-repeat;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          .logo-svg {
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+          }
         }
         .logo-text {
           width: 100px;
@@ -122,18 +142,14 @@ export default {
         }
       }
     }
-    canvas {
-      width: 100%;
-      height: 300px;
-      display: block;
+    .graphics-container {
       margin-top: 80px;
-      margin-left: auto;
-      margin-right: auto;
-      background-color: black;
-      background-image: url('./../assets/temp/home-graphics2.jpg');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: 50% 100%;
+      margin-left: 5%;
+      margin-right: 5%;
+      width: 90%;
+      height: 300px;
+      position: relative;
+      overflow: hidden;
     }
     .description-box {
       margin-left: 7.5%;

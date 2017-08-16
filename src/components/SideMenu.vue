@@ -1,7 +1,9 @@
 <template>
   <div id="sideMenu">
     <router-link to="/home" class="link">
-      <div class="logo"></div>
+      <div class="logo">
+        <icon class="logo-svg" width="45" height="45" :glyph="logo"></icon>
+      </div>
     </router-link>
     <ul class="menu">
       <li class="menu-elem" v-for="link in links" v-if="links" @click="select(link)">
@@ -20,12 +22,13 @@
 </template>
 
 <script>
+import icon from './icon.vue';
+import logo from "./../assets/meonin-logo2.svg";
+
 export default {
   name: 'sideMenu',
   data () {
-    return {
-
-    }
+    return { logo }
   },
   computed: {
     links: function() {
@@ -36,6 +39,9 @@ export default {
     select: function(product) {
       this.$store.commit('m_selectProduct', product);
     }
+  },
+  components: {
+    icon
   }
 }
 </script>
@@ -52,9 +58,6 @@ export default {
   .logo {
     width: 45px;
     height: 45px;
-    background-image: url('./../assets/meonin-logo2.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
     margin-bottom: 30px;
   }
   ul {

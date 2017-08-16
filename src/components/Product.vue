@@ -9,7 +9,10 @@
 
       <div class="content">
         <article v-for="item in product.content">
-          <img class="image" :src="imagePath(item.image, product.title)"></img>
+          <div class="image-container">
+            <img class="image" :src="imagePath(item.image, product.title)"></img>
+            <div class="shadow"></div>
+          </div>
           <div class="text">
             <h2>{{item[language].title}}</h2>
             <p>{{item[language].text}}</p>
@@ -22,6 +25,7 @@
 
 <script>
 import SideMenu from './SideMenu.vue';
+
 export default {
   name: 'product',
   computed: {
@@ -38,7 +42,7 @@ export default {
     },
   },
   components: {
-    SideMenu
+    SideMenu,
   }
 }
 </script>
@@ -68,16 +72,39 @@ export default {
     .content {
       article {
         color: gray;
+        .image-container {
+          width: auto;
+          height: auto;
+          position: relative;
+          .shadow {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 100%;
+            /*box-shadow: inset 0px 0px 80px 80px rgba(245,245,245);*/
+          }
+        }
         img {
           width: 100%;
           height: auto;
+          opacity: 80%;
         }
         .text {
+          margin-left: 200px;
+          padding-bottom: 50px;
+          padding-top: 50px;
           h2 {
             color: gray;
+            font-weight: bold;
+            text-transform: none;
+            font-size: 22px;
+            width: 200px;
           }
           p {
             color: gray;
+            width: 400px;
+            line-height: 140%;
           }
         }
       }
