@@ -17,7 +17,7 @@
           <div class="text" v-bind:id="item.id" @click="toggleExpand()"">
             <h2 v-bind:id="item.id">{{item[language].title}}</h2>
             <p v-bind:id="item.id">{{item[language].text}}</p>
-            <div v-bind:id="item.id" class="plus">
+            <div v-bind:id="item.id" v-bind:class="['plus', 'plus' + item.id]">
               <icon v-bind:id="item.id" :glyph="plus"></icon>
             </div>
           </div>
@@ -61,7 +61,8 @@ export default {
       let id = event.target.id || event.target.parentNode.id;
       let selector = '.expandable' + id;
       let target = this.$el.querySelector(selector);
-      let plus = this.$el.querySelector('.plus');
+      let plus = this.$el.querySelector('.plus'+id);
+      console.log(plus);
       if(target.classList.contains('open')) {
         target.classList.remove('open')
         plus.classList.remove('close')
