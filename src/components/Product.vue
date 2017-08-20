@@ -10,6 +10,7 @@
       <div class="content">
         <article v-for="item in product.content">
           <div class="image-container">
+            <!-- <img class="image" v-bind:src="path + product.title + '/' + item.image"></img> -->
             <img class="image" :src="imagePath(item.image, product.title)"></img>
             <div class="shadow"></div>
           </div>
@@ -41,6 +42,7 @@ export default {
   data: function() {
     return {
       plus,
+      path: '/src/assets/images/'
     }
   },
   computed: {
