@@ -30,7 +30,6 @@ export default {
   text-align: left;
   font-size: 16px;
 }
-
 html, body {
   width: 100%;
   min-height: 100%;
@@ -38,13 +37,11 @@ html, body {
   padding: 0px;
   height: 100%;
 }
-
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
 }
-
 h2 {
   font-size: 20px;
   text-align: left;
