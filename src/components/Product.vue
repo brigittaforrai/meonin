@@ -13,10 +13,18 @@
             <img class="image" :src="imagePath(item.image, product.title)"></img>
             <div class="shadow"></div>
           </div>
-          <div class="text">
-            <h2>{{item[language].title}}</h2>
-            <p>{{item[language].text}}</p>
+          <div class="text" v-bind:id="item.id" @click="toggleExpand()"">
+            <h2 v-bind:id="item.id">{{item[language].title}}</h2>
+            <p v-bind:id="item.id">{{item[language].text}}</p>
+            <div v-bind:id="item.id" class="plus">
+              <icon v-bind:id="item.id" :glyph="plus"></icon>
+            </div>
           </div>
+          <section v-bind:class="['expandable', 'expandable' + item.id]">
+            <p>
+              A Lorem Ipsum egy egyszerû szövegrészlete, szövegutánzata a betûszedõ és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban; mikor egy ismeretlen nyomdász összeállította a betûkészletét és egy példa-könyvet vagy szöveget nyomott papírra, ezt használta.
+            </p>
+          </section>
         </article>
       </div>
     </div>
@@ -25,24 +33,45 @@
 
 <script>
 import SideMenu from './SideMenu.vue';
+import icon from './icon.vue';
+import plus from "./../assets/plus.svg";
 
 export default {
   name: 'product',
+  data: function() {
+    return {
+      plus,
+    }
+  },
   computed: {
     product: function() {
       return this.$store.getters.g_productObject;
     },
     language: function() {
       return this.$store.getters.g_language;
-    }
+    },
   },
   methods: {
     imagePath: function(image, title) {
       return require('./../assets/images/' + title + '/' + image);
     },
+    toggleExpand() {
+      let id = event.target.id || event.target.parentNode.id;
+      let selector = '.expandable' + id;
+      let target = this.$el.querySelector(selector);
+      let plus = this.$el.querySelector('.plus');
+      if(target.classList.contains('open')) {
+        target.classList.remove('open')
+        plus.classList.remove('close')
+      } else {
+        target.classList.add('open');
+        plus.classList.add('close');
+      }
+    },
   },
   components: {
     SideMenu,
+    icon
   }
 }
 </script>
@@ -76,14 +105,6 @@ export default {
           width: auto;
           height: auto;
           position: relative;
-          .shadow {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            height: 100%;
-            width: 100%;
-            /*box-shadow: inset 0px 0px 80px 80px rgba(245,245,245);*/
-          }
         }
         img {
           width: 100%;
@@ -92,8 +113,10 @@ export default {
         }
         .text {
           margin-left: 200px;
-          padding-bottom: 50px;
+          margin-right: 100px;
+          padding-bottom: 100px;
           padding-top: 50px;
+          position: relative;
           h2 {
             color: gray;
             font-weight: bold;
@@ -106,9 +129,60 @@ export default {
             width: 400px;
             line-height: 140%;
           }
+          .plus {
+            position: absolute;
+            right: 50%;
+            bottom: 50px;
+            width: auto;
+            height: auto;
+            cursor: pointer;
+            transform: rotate(0deg);
+            transition: all .5s ease;
+            svg {
+              transition: all .5s ease;
+              width: 20px;
+              height: 20px;
+              fill: gray;
+            }
+          }
+          .plus.close {
+            transform: rotate(45deg);
+            bottom: -50px;
+            svg {
+              fill: white;
+            }
+          }
+        }
+        .expandable {
+          background-color: black;
+          color: white;
+          width: 100%;
+          height: auto;
+          max-height: 0px;
+          padding-left: 10%;
+          padding-right: 10%;
+          transition: all 1s ease;
+          padding-top: 0px;
+          padding-bottom: 0px;
+          p {
+            width: 50%;
+            height: auto;
+            padding-top: 50px;
+            padding-bottom: 50px;
+          }
+        }
+        .expandable.open {
+          max-height: 500px;
+          animation-name: test;
+          animation-duration: 5s;
+
         }
       }
     }
   }
+}
+@keyframes test {
+  /*0% {height: 0px;}*/
+  /*100% {height: 200px;}*/
 }
 </style>

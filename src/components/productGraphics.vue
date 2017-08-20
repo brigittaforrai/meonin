@@ -1,38 +1,61 @@
 <template>
-  <div id="graphics">
-    <icon @click.native="selectProduct('nomad')" :glyph="nomadVector"></icon>
-    <icon @click.native="selectProduct('contour')" :glyph="contourVector"></icon>
-    <icon @click.native="selectProduct('sideboard')" :glyph="sideboardVector"></icon>
-    <icon @click.native="selectProduct('nana')" :glyph="nanaVector"></icon>
-    <icon @click.native="selectProduct('uhuu')" :glyph="uhuuVector"></icon>
-    <icon @click.native="selectProduct('whole')" :glyph="wholeVector"></icon>
+  <div id="graphics" v-bind:class="time">
+    <div class="container">
+      <icon class="nomad" v-on:mouseover.native="mouseOver('nomad')" :glyph="'#nomad_'+time"></icon>
+      <icon class="contour" v-on:mouseover.native="mouseOver('contour')" @click.native="selectProduct('contour')" :glyph="'#contour_'+ time"></icon>
+      <icon class="sideboard" v-on:mouseover.native="mouseOver('sideboard')" @click.native="selectProduct('sideboard')" :glyph="'#sideboard_'+ time"></icon>
+      <icon class="nana" v-on:mouseover.native="mouseOver('nana')" @click.native="selectProduct('nana')" :glyph="'#nana_'+ time"></icon>
+      <icon class="uhuu" v-on:mouseover.native="mouseOver('uhuu')" @click.native="selectProduct('uhuu')" :glyph="'#uhuu_'+ time"></icon>
+      <icon class="whole" v-on:mouseover.native="mouseOver('whole')" @click.native="selectProduct('whole')" :glyph="'#whole_'+ time"></icon>
+    </div>
   </div>
 </template>
 
 <script>
 import icon from './icon.vue';
-import nomadVector from './../assets/graphics/nomad_w.svg';
-import contourVector from './../assets/graphics/contour_w.svg';
-import sideboardVector from './../assets/graphics/sideboard_w.svg';
-import nanaVector from './../assets/graphics/nana_w.svg';
-import uhuuVector from './../assets/graphics/uhuu_w.svg';
-import wholeVector from './../assets/graphics/whole_w.svg';
+import nomad_day from './../assets/graphics/nomad_day.svg';
+import contour_day from './../assets/graphics/contour_day.svg';
+import sideboard_day from './../assets/graphics/sideboard_day.svg';
+import nana_day from './../assets/graphics/nana_day.svg';
+import uhuu_day from './../assets/graphics/uhuu_day.svg';
+import whole_day from './../assets/graphics/whole_day.svg';
+import nomad_night from './../assets/graphics/nomad_night.svg';
+import contour_night from './../assets/graphics/contour_night.svg';
+import sideboard_night from './../assets/graphics/sideboard_night.svg';
+import nana_night from './../assets/graphics/nana_night.svg';
+import uhuu_night from './../assets/graphics/uhuu_night.svg';
+import whole_night from './../assets/graphics/whole_night.svg';
 
 export default {
   name: 'graphics',
   data: function() {
     return {
-      nomadVector,
-      contourVector,
-      sideboardVector,
-      nanaVector,
-      uhuuVector,
-      wholeVector
+      nomad_day,
+      contour_day,
+      sideboard_day,
+      nana_day,
+      uhuu_day,
+      whole_day,
+      nomad_night,
+      contour_night,
+      sideboard_night,
+      nana_night,
+      uhuu_night,
+      whole_night,
+    }
+  },
+  computed: {
+    time: function() {
+      return this.$store.getters.g_time;
     }
   },
   methods: {
     selectProduct: function(productName) {
       this.$emit('select', productName);
+    },
+    mouseOver: function(productName) {
+      this.$store.commit('m_hoverProduct', productName);
+      this.$emit('hover', productName);
     }
   },
   components: {
@@ -43,19 +66,49 @@ export default {
 
 <style lang='postcss' scoped>
 #graphics {
-  position: absolute;
   min-width: 100%;
   width: auto;
-  height: 300px;
+  height: 250px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: bottom;
-  padding-top: 70px;
-  left: 0px;
-  svg {
-    width: 200px;
-    height: 200px;
+  .container {
+    position: relative;
+    width: 100%;
+    svg {
+      position: absolute;
+      opacity: 0.3;
+      width: 280px;
+      height: 280px;
+    }
+    svg:hover {
+      opacity: 1;
+    }
+    .nomad {
+      left: 10px;
+      bottom: 0px;
+    }
+    .contour {
+      left: 210px;
+      bottom: -47px;
+    }
+    .uhuu {
+      left: 395px;
+      bottom: -118px;
+    }
+    .sideboard {
+      left: 650px;
+      bottom: -98px;
+    }
+    .whole {
+      left: 890px;
+      bottom: -108px;
+    }
+    .nana {
+      left: 1135px;
+      bottom: -87px;
+    }
   }
 }
 </style>

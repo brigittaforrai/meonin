@@ -1,12 +1,22 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <transition name="component-fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
 export default {
   name: 'app',
+  methods: {
+    setTime() {
+      this.$store.dispatch('a_localTime');
+    }
+  },
+  beforeMount() {
+    this.setTime();
+  }
 }
 </script>
 
@@ -36,18 +46,27 @@ html, body {
 }
 
 h2 {
-  color: white;
-  font-size: 18px;
+  font-size: 20px;
   text-align: left;
   font-weight: normal;
   text-transform: uppercase;
   margin-bottom: 15px;
+  font-weight: bold;
 }
 p {
-  font-size: 13px;
-  color: white;
+  font-size: 12px;
   text-align: left;
   font-weight: normal;
-  line-height: 120%;
+  line-height: 150%;
 }
+* > svg {
+  transform-origin: left bottom;
+}
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .3s ease-in;
+}
+.component-fade-enter, .component-fade-leave-to {
+  opacity: 0;
+}
+
 </style>

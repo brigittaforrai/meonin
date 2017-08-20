@@ -10,8 +10,10 @@ export default new Vuex.Store({
     products: DATA.pages.products,
     selectedProduct: '',
     productObject: {},
+    productDesc: {},
     productNames: ['nana', 'nomad', 'contour', 'sideboard', 'whole', 'uhuu'],
-    language: 'eng'
+    language: 'eng',
+    time: 'day'
   },
 
   getters: {
@@ -20,6 +22,9 @@ export default new Vuex.Store({
     },
     g_productObject(state) {
       return state.productObject;
+    },
+    g_productDesc(state) {
+      return state.productDesc;
     },
     g_menuList(state) {
       let menuList = [];
@@ -36,6 +41,9 @@ export default new Vuex.Store({
     },
     g_language: (state) => {
       return state.language;
+    },
+    g_time: (state) => {
+      return state.time;
     }
   },
 
@@ -48,14 +56,32 @@ export default new Vuex.Store({
         }
       })
     },
+    m_hoverProduct: (state, productName) => {
+      Object.keys(state.products).forEach((key) => {
+        if(state.products[key].title === productName) {
+          state.productDesc = state.products[key].desc;
+        }
+      })
+    },
     m_changeLanguage: (state) => {
       state.language = state.language === 'eng' ? 'hun' : 'eng';
+    },
+    m_setNight: (state) => {
+      state.time = 'night';
+    },
+    m_setDay: (state) => {
+      state.time = 'day';
     }
   },
 
   actions: {
-    // a_addBuilding: (context, data) => {
-    //   fb.saveBuilding(data);
-    // }
-  },
+    a_localTime: (context) => {
+      let time = new Date().getHours();
+      if(time < 19 && time > 6 ) {
+        context.commit('m_setDay');
+      } else {
+        context.commit('m_setNight');
+      }
+    }
+  }
 });
