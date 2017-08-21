@@ -1,15 +1,19 @@
 <template>
   <div id="blog">
-    blog
+    <side-menu></side-menu>
   </div>
 </template>
 
 <script>
+import SideMenu from './SideMenu.vue';
 export default {
   name: 'blog',
   data () {
     return {
     }
+  },
+  components: {
+    SideMenu
   }
 }
 </script>

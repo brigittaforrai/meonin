@@ -63,7 +63,7 @@ export default {
   mounted() {
     // TODO
     let template = this.$el;
-    let slider = template.querySelector('.graphics-container');
+    let slider = template.querySelector('#graphics');
     let position = 0;
     slider.addEventListener('mousemove', (event) => {
       let x = event.clientX;
@@ -89,8 +89,11 @@ export default {
 <style scoped lang="postcss">
   #home {
     height: 100%;
+    min-height: 700px;
+    width: 100%;
     padding-bottom: 50px;
     overflow: hidden;
+    position: fixed;
     .graphics-container {
       position: absolute;
       bottom: 150px;

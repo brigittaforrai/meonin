@@ -64,12 +64,20 @@ export default {
     },
     removeClasses() {
       if(this.$parent.$el) {
-        for(let id=1; id<10; id++) {
-          let elem = this.$parent.$el.querySelector('.expandable' + id);
-          if(elem) {
-            elem.classList.remove('open');
-          }
-        }
+        let elems = this.$parent.$el.querySelectorAll('.expandable');
+        let icons = this.$parent.$el.querySelectorAll('.plus');
+        elems.forEach((elem) => {
+          elem.classList.remove('open');
+        });
+        icons.forEach((icon) => {
+          icon.classList.remove('close');
+        });
+        // for(let id=1; id<10; id++) {
+        //   let elem = this.$parent.$el.querySelector('.expandable' + id);
+        //   if(elem) {
+        //     elem.classList.remove('open');
+        //   }
+        // }
       }
     }
   },

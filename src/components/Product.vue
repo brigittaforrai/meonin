@@ -10,17 +10,16 @@
       <div class="content">
         <article v-for="item in product.content">
           <div class="image-container">
-            <!-- <img class="image" v-bind:src="path + product.title + '/' + item.image"></img> -->
             <img class="image" :src="imagePath(item.image, product.title)"></img>
             <div class="shadow"></div>
           </div>
-          <div class="text" v-bind:id="item.id" @click="toggleExpand()"">
+          <section class="text" v-bind:id="item.id" @click="toggleExpand()"">
             <h2 v-bind:id="item.id">{{item[language].title}}</h2>
             <p v-bind:id="item.id">{{item[language].text}}</p>
             <div v-bind:id="item.id" v-bind:class="['plus', 'plus' + item.id]">
               <icon v-bind:id="item.id" :glyph="plus"></icon>
             </div>
-          </div>
+          </section>
           <section v-bind:class="['expandable', 'expandable' + item.id]">
             <p>
               A Lorem Ipsum egy egyszerû szövegrészlete, szövegutánzata a betûszedõ és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban; mikor egy ismeretlen nyomdász összeállította a betûkészletét és egy példa-könyvet vagy szöveget nyomott papírra, ezt használta.
@@ -29,20 +28,21 @@
         </article>
       </div>
     </div>
+    <footer-comp></footer-comp>
   </div>
 </template>
 
 <script>
 import SideMenu from './SideMenu.vue';
 import icon from './icon.vue';
-import plus from "./../assets/plus.svg";
+import plus from './../assets/plus.svg';
+import footerComp from './footer.vue';
 
 export default {
   name: 'product',
   data: function() {
     return {
-      plus,
-      path: '/src/assets/images/'
+      plus
     }
   },
   computed: {
@@ -62,7 +62,6 @@ export default {
       let selector = '.expandable' + id;
       let target = this.$el.querySelector(selector);
       let plus = this.$el.querySelector('.plus'+id);
-      console.log(plus);
       if(target.classList.contains('open')) {
         target.classList.remove('open')
         plus.classList.remove('close')
@@ -74,7 +73,8 @@ export default {
   },
   components: {
     SideMenu,
-    icon
+    icon,
+    footerComp
   }
 }
 </script>
@@ -134,7 +134,7 @@ export default {
           }
           .plus {
             position: absolute;
-            right: 50%;
+            right: 52%;
             bottom: 50px;
             width: auto;
             height: auto;
@@ -150,35 +150,38 @@ export default {
           }
           .plus.close {
             transform: rotate(45deg);
-            bottom: -50px;
+            bottom: -70px;
             svg {
-              fill: white;
+              fill: black;
             }
           }
         }
         .expandable {
-          background-color: black;
-          color: white;
+          background-color: white;
+          color: gray;
           width: 100%;
           height: auto;
           max-height: 0px;
-          padding-left: 10%;
-          padding-right: 10%;
           transition: all 1s ease;
           padding-top: 0px;
           padding-bottom: 0px;
           p {
-            width: 50%;
+            width: 400px;
             height: auto;
-            padding-top: 50px;
+            margin-left: 55%;
+            padding-top: 100px;
             padding-bottom: 50px;
+            opacity: 0;
+            transition: all .7s ease;
           }
         }
         .expandable.open {
           max-height: 500px;
           animation-name: test;
           animation-duration: 5s;
-
+          p {
+            opacity: 1;
+          }
         }
       }
     }

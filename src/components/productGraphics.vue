@@ -1,13 +1,11 @@
 <template>
   <div id="graphics" v-bind:class="time">
-    <div class="container">
-      <icon class="nomad" v-on:mouseover.native="mouseOver('nomad')" :glyph="'#nomad_'+time"></icon>
-      <icon class="contour" v-on:mouseover.native="mouseOver('contour')" @click.native="selectProduct('contour')" :glyph="'#contour_'+ time"></icon>
-      <icon class="sideboard" v-on:mouseover.native="mouseOver('sideboard')" @click.native="selectProduct('sideboard')" :glyph="'#sideboard_'+ time"></icon>
-      <icon class="nana" v-on:mouseover.native="mouseOver('nana')" @click.native="selectProduct('nana')" :glyph="'#nana_'+ time"></icon>
-      <icon class="uhuu" v-on:mouseover.native="mouseOver('uhuu')" @click.native="selectProduct('uhuu')" :glyph="'#uhuu_'+ time"></icon>
-      <icon class="whole" v-on:mouseover.native="mouseOver('whole')" @click.native="selectProduct('whole')" :glyph="'#whole_'+ time"></icon>
-    </div>
+    <icon class="nomad" v-on:mouseover.native="mouseOver('nomad')" @click.native="selectProduct('nomad')" :glyph="'#nomad_'+time"></icon>
+    <icon class="contour" v-on:mouseover.native="mouseOver('contour')" @click.native="selectProduct('contour')" :glyph="'#contour_'+ time"></icon>
+    <icon class="sideboard" v-on:mouseover.native="mouseOver('sideboard')" @click.native="selectProduct('sideboard')" :glyph="'#sideboard_'+ time"></icon>
+    <icon class="nana" v-on:mouseover.native="mouseOver('nana')" @click.native="selectProduct('nana')" :glyph="'#nana_'+ time"></icon>
+    <icon class="uhuu" v-on:mouseover.native="mouseOver('uhuu')" @click.native="selectProduct('uhuu')" :glyph="'#uhuu_'+ time"></icon>
+    <icon class="whole" v-on:mouseover.native="mouseOver('whole')" @click.native="selectProduct('whole')" :glyph="'#whole_'+ time"></icon>
   </div>
 </template>
 
@@ -69,46 +67,39 @@ export default {
   min-width: 100%;
   width: auto;
   height: 250px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: bottom;
-  .container {
-    position: relative;
-    width: 100%;
-    svg {
-      position: absolute;
-      opacity: 0.3;
-      width: 280px;
-      height: 280px;
-    }
-    svg:hover {
-      opacity: 1;
-    }
-    .nomad {
-      left: 10px;
-      bottom: 0px;
-    }
-    .contour {
-      left: 210px;
-      bottom: -47px;
-    }
-    .uhuu {
-      left: 395px;
-      bottom: -118px;
-    }
-    .sideboard {
-      left: 650px;
-      bottom: -98px;
-    }
-    .whole {
-      left: 890px;
-      bottom: -108px;
-    }
-    .nana {
-      left: 1135px;
-      bottom: -87px;
-    }
+  position: relative;
+  svg {
+    position: absolute;
+    opacity: 0.3;
+    width: 280px;
+    height: 280px;
+  }
+  svg:hover {
+    opacity: 1;
+  }
+  .nomad {
+    left: 10px;
+    bottom: 0px;
+  }
+  .contour {
+    left: 210px;
+    bottom: -47px;
+  }
+  .uhuu {
+    left: 395px;
+    bottom: -118px;
+  }
+  .sideboard {
+    left: 650px;
+    bottom: -98px;
+  }
+  .whole {
+    left: 890px;
+    bottom: -108px;
+  }
+  .nana {
+    left: 1135px;
+    bottom: -87px;
   }
 }
 </style>
