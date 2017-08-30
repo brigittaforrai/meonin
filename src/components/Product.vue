@@ -108,11 +108,22 @@ export default {
           width: auto;
           height: auto;
           position: relative;
-        }
-        img {
-          width: 100%;
-          height: auto;
-          opacity: 80%;
+          .shadow {
+            display: none;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            /*background: linear-gradient(to bottom,  rgba(245,245,245,0) 90%,rgba(245,245,245,1) 100%), linear-gradient(to top,  rgba(245,245,245,0) 90%,rgba(245,245,245,1) 100%);*/
+          }
+          img {
+            width: 100%;
+            height: auto;
+            opacity: 80%;
+            /*box-shadow: 25px 25px 50px 0 black inset; */
+          }
         }
         .text {
           margin-left: 200px;

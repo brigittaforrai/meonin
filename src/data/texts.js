@@ -17,7 +17,7 @@ export default {
         },
         content: [
           {
-            image: 'nana1.jpg',
+            image: 'NANA1.jpg',
             id: 1,
             hun: {
               title: 'TITLE',
@@ -29,7 +29,7 @@ export default {
             }
           },
           {
-            image: 'nana2.jpg',
+            image: 'NANA2.jpg',
             id: 2,
             hun: {
               title: 'TITLE',
@@ -41,7 +41,7 @@ export default {
             }
           },
           {
-            image: 'nana3.jpg',
+            image: 'NANA3.jpg',
             id: 3,
             hun: {
               title: 'TITLE',
@@ -53,7 +53,7 @@ export default {
             }
           },
           {
-            image: 'nana4.jpg',
+            image: 'NANA4.jpg',
             id: 4,
             hun: {
               title: 'TITLE',
@@ -65,7 +65,7 @@ export default {
             }
           },
           {
-            image: 'nana5.jpg',
+            image: 'NANA5.jpg',
             id: 5,
             hun: {
               title: 'TITLE',
@@ -87,7 +87,7 @@ export default {
         },
         content: [
           {
-            image: 'nomad1.jpg',
+            image: 'NOMAD1.jpg',
             id: 1,
             hun: {
               title: 'TITLE',
@@ -99,7 +99,7 @@ export default {
             }
           },
           {
-            image: 'nomad2.jpg',
+            image: 'NOMAD2.jpg',
             id: 2,
             hun: {
               title: 'TITLE',
@@ -111,7 +111,7 @@ export default {
             }
           },
           {
-            image: 'nomad3.jpg',
+            image: 'NOMAD3.jpg',
             id: 3,
             hun: {
               title: 'TITLE',
@@ -123,7 +123,7 @@ export default {
             }
           },
           {
-            image: 'nomad4.jpg',
+            image: 'NOMAD4.jpg',
             id: 4,
             hun: {
               title: 'TITLE',
@@ -135,7 +135,7 @@ export default {
             }
           },
           {
-            image: 'nomad5.jpg',
+            image: 'NOMAD5.jpg',
             id: 5,
             hun: {
               title: 'TITLE',
@@ -157,7 +157,7 @@ export default {
         },
         content: [
           {
-            image: 'contour1.jpg',
+            image: 'CONTOUR1.jpg',
             id: 1,
             hun: {
               title: 'TITLE',
@@ -169,7 +169,7 @@ export default {
             }
           },
           {
-            image: 'contour2.jpg',
+            image: 'CONTOUR2.jpg',
             id: 2,
             hun: {
               title: 'TITLE',
@@ -181,7 +181,7 @@ export default {
             }
           },
           {
-            image: 'contour3.jpg',
+            image: 'CONTOUR3.jpg',
             id: 3,
             hun: {
               title: 'TITLE',
@@ -193,7 +193,7 @@ export default {
             }
           },
           {
-            image: 'contour4.jpg',
+            image: 'CONTOUR4.jpg',
             id: 4,
             hun: {
               title: 'TITLE',
@@ -205,7 +205,7 @@ export default {
             }
           },
           {
-            image: 'contour5.jpg',
+            image: 'CONTOUR5.jpg',
             id: 5,
             hun: {
               title: 'TITLE',
@@ -227,7 +227,7 @@ export default {
         },
         content: [
           {
-            image: 'sideboard1.jpg',
+            image: 'SIDEBOARD1.jpg',
             id: 1,
             hun: {
               title: 'TITLE',
@@ -239,7 +239,7 @@ export default {
             }
           },
           {
-            image: 'sideboard2.jpg',
+            image: 'SIDEBOARD2.jpg',
             id: 2,
             hun: {
               title: 'TITLE',
@@ -251,7 +251,7 @@ export default {
             }
           },
           {
-            image: 'sideboard3.jpg',
+            image: 'SIDEBOARD3.jpg',
             id: 3,
             hun: {
               title: 'TITLE',
@@ -263,7 +263,7 @@ export default {
             }
           },
           {
-            image: 'sideboard4.jpg',
+            image: 'SIDEBOARD4.jpg',
             id: 4,
             hun: {
               title: 'TITLE',
@@ -275,7 +275,7 @@ export default {
             }
           },
           {
-            image: 'sideboard5.jpg',
+            image: 'SIDEBOARD5.jpg',
             id: 5,
             hun: {
               title: 'TITLE',
@@ -297,7 +297,7 @@ export default {
         },
         content: [
           {
-            image: 'uhuu1.jpg',
+            image: 'UHUU1.jpg',
             id: 1,
             hun: {
               title: 'TITLE',
@@ -309,7 +309,7 @@ export default {
             }
           },
           {
-            image: 'uhuu2.jpg',
+            image: 'UHUU2.jpg',
             id: 2,
             hun: {
               title: 'TITLE',
@@ -321,7 +321,7 @@ export default {
             }
           },
           {
-            image: 'uhuu3.jpg',
+            image: 'UHUU3.jpg',
             id: 3,
             hun: {
               title: 'TITLE',
@@ -333,7 +333,7 @@ export default {
             }
           },
           {
-            image: 'uhuu4.jpg',
+            image: 'UHUU4.jpg',
             id: 4,
             hun: {
               title: 'TITLE',
@@ -345,7 +345,7 @@ export default {
             }
           },
           {
-            image: 'uhuu5.jpg',
+            image: 'UHUU5.jpg',
             id: 5,
             hun: {
               title: 'TITLE',

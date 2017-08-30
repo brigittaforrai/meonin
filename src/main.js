@@ -3,13 +3,19 @@ import App from './App';
 import router from './router';
 import store from './vuex/store.js';
 import VueLocalStorage from 'vue-ls';
+import VeeValidate from 'vee-validate';
+import VueResource from 'vue-resource';
 
 let options = {
   namespace: 'vuejs__'
 };
 
+Vue.use(VueResource);
+Vue.use(VeeValidate);
 Vue.use(VueLocalStorage, options);
 Vue.config.productionTip = false;
+
+Vue.http.headers.common['Access-Control-Allow-Origin'] = '*';
 
 /* eslint-disable no-new */
 new Vue({
