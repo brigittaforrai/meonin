@@ -3,18 +3,33 @@
     <transition name="component-fade" mode="out-in">
       <router-view></router-view>
     </transition>
+    <side-menu :home="home" :selected="selected"></side-menu>
   </div>
 </template>
 
 <script>
+import sideMenu from "./components/SideMenu.vue";
 export default {
   name: 'app',
+  components: { sideMenu },
+  data: function () {
+    return {
+    };
+  },
+  computed: {
+    home () {
+      return this.$route.name === 'Home' ? true : false;
+    },
+    selected () {
+      return this.$store.getters.selectedProduct || null;
+    }
+  },
   methods: {
     setTime() {
       this.$store.dispatch('a_localTime');
     }
   },
-  beforeMount() {
+  mounted() {
     this.setTime();
   }
 }

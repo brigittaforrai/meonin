@@ -1,11 +1,11 @@
 <template>
   <div id="graphics" v-bind:class="time">
-    <icon class="nomad" v-on:mouseover.native="mouseOver('nomad')" @click.native="selectProduct('nomad')" :glyph="'#nomad_'+time"></icon>
-    <icon class="contour" v-on:mouseover.native="mouseOver('contour')" @click.native="selectProduct('contour')" :glyph="'#contour_'+ time"></icon>
-    <icon class="sideboard" v-on:mouseover.native="mouseOver('sideboard')" @click.native="selectProduct('sideboard')" :glyph="'#sideboard_'+ time"></icon>
-    <icon class="nana" v-on:mouseover.native="mouseOver('nana')" @click.native="selectProduct('nana')" :glyph="'#nana_'+ time"></icon>
-    <icon class="uhuu" v-on:mouseover.native="mouseOver('uhuu')" @click.native="selectProduct('uhuu')" :glyph="'#uhuu_'+ time"></icon>
-    <icon class="whole" v-on:mouseover.native="mouseOver('whole')" @click.native="selectProduct('whole')" :glyph="'#whole_'+ time"></icon>
+    <icon class="icon nomad" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('nomad')" @click.native="selectProduct('nomad')" :glyph="'#nomad_'+time"></icon>
+    <icon class="icon contour" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('contour')" @click.native="selectProduct('contour')" :glyph="'#contour_'+ time"></icon>
+    <icon class="icon uhuu" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('uhuu')" @click.native="selectProduct('uhuu')" :glyph="'#uhuu_'+ time"></icon>
+    <icon class="icon sideboard" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('sideboard')" @click.native="selectProduct('sideboard')" :glyph="'#sideboard_'+ time"></icon>
+    <icon class="icon whole" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('whole')" @click.native="selectProduct('whole')" :glyph="'#whole_'+ time"></icon>
+    <icon class="icon nana" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('nana')" @click.native="selectProduct('nana')" :glyph="'#nana_'+ time"></icon>
   </div>
 </template>
 
@@ -54,6 +54,24 @@ export default {
     mouseOver: function(productName) {
       this.$store.commit('m_hoverProduct', productName);
       this.$emit('hover', productName);
+      let icons = document.querySelectorAll('.icon');
+      icons.forEach((icon) => {
+        if (icon.classList.contains(productName)) {
+          icon.classList.add('active');
+          icon.classList.remove('inactive');
+        } else {
+          icon.classList.add('inactive');
+          icon.classList.remove('active');
+        }
+      });
+    },
+    mouseOut () {
+      console.log('leave');
+      let icons = document.querySelectorAll('.icon');
+      icons.forEach((icon) => {
+        icon.classList.remove('active');
+        icon.classList.remove('inactive');
+      });
     }
   },
   components: {
@@ -70,12 +88,16 @@ export default {
   position: relative;
   svg {
     position: absolute;
-    opacity: 0.3;
+    opacity: 1;
     width: 280px;
     height: 280px;
+    transition: opacity 0.5s;
   }
-  svg:hover {
+  .active {
     opacity: 1;
+  }
+  .inactive {
+    opacity: 0.2;
   }
   .nomad {
     left: 10px;

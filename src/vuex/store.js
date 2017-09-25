@@ -27,17 +27,17 @@ export default new Vuex.Store({
       return state.productDesc;
     },
     g_menuList(state) {
-      let menuList = [];
-      if(state.selectedProduct) {
-        state.productNames.forEach(function(elem) {
-          if(elem !== state.selectedProduct) {
-            menuList.push(elem);
-          }
-        });
-        return menuList;
-      } else {
+      // let menuList = [];
+      // if(state.selectedProduct) {
+      //   state.productNames.forEach(function(elem) {
+      //     if(elem !== state.selectedProduct) {
+      //       menuList.push(elem);
+      //     }
+      //   });
+      //   return menuList;
+      // } else {
         return state.productNames;
-      }
+      // }
     },
     g_language: (state) => {
       return state.language;

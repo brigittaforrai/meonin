@@ -1,6 +1,5 @@
 <template>
   <div id="product" v-if="product">
-    <side-menu></side-menu>
 
     <div class="container">
       <div class="productCategory">

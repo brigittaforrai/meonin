@@ -7,20 +7,20 @@
     </router-link>
     <ul class="menu">
       <li class="menu-elem" v-for="link in links" v-if="links && !home" @click="select(link)">
-        <router-link :to="{ name: 'Products', params: { productId: link } }">{{link}}</router-link>
+        <router-link v-bind:class=" active(link) ? 'active' : 'inactive'" :to="{ name: 'Products', params: { productId: link } }">{{link}}</router-link>
       </li>
       <li class="menu-elem divider" v-if="!home">-</li>
-      <li class="menu-elem" v-if="home">
+      <!-- <li class="menu-elem" v-if="home">
         <router-link to="/migo" class="link">migo</router-link>
-      </li>
-      <li class="menu-elem" v-if="home">
-        <router-link to="/blog" class="link">blog</router-link>
+      </li> -->
+      <li class="menu-elem">
+        <router-link v-bind:class=" active('blog') ? 'active' : 'inactive'" to="/blog" class="link">blog</router-link>
       </li>
       <li class="menu-elem">
-        <router-link to="/about" class="link">about</router-link>
+        <router-link v-bind:class=" active('about') ? 'active' : 'inactive'" to="/about" class="link">about</router-link>
       </li>
       <li class="menu-elem">
-        <router-link to="/contact" class="link">contact</router-link>
+        <router-link v-bind:class=" active('contact') ? 'active' : 'inactive'" to="/contact" class="link">contact</router-link>
       </li>
       <li class="menu-elem lang">
         <span class="lang" @click="setLanguage()">{{language}}</span>
@@ -36,7 +36,7 @@ import logo from "./../assets/meonin-logo2.svg";
 
 export default {
   name: 'sideMenu',
-  props: ['home'],
+  props: ['home', 'selected'],
   data () {
     return {
       logo,
@@ -55,6 +55,9 @@ export default {
     }
   },
   methods: {
+    active (path) {
+      return this.$route.path === '/products/' + path || this.$route.path === '/' + path ? true : false;
+    },
     select: function(product) {
       this.removeClasses();
       this.$store.commit('m_selectProduct', product);
@@ -72,18 +75,10 @@ export default {
         icons.forEach((icon) => {
           icon.classList.remove('close');
         });
-        // for(let id=1; id<10; id++) {
-        //   let elem = this.$parent.$el.querySelector('.expandable' + id);
-        //   if(elem) {
-        //     elem.classList.remove('open');
-        //   }
-        // }
       }
     }
   },
-  components: {
-    icon
-  }
+  components: { icon }
 }
 </script>
 
@@ -115,13 +110,17 @@ export default {
       font-size: 14px;
       font-weight: 500;
       text-decoration: none;
-      a:link {
-        text-decoration: none;
-      }
       a:visited {
         text-decoration: none;
       }
       a:hover {
+        text-decoration: underline;
+        color: black;
+      }
+      a:link.active {
+        text-decoration: underline;
+      }
+      a:link.inactive {
         text-decoration: none;
       }
     }

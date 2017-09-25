@@ -1,6 +1,6 @@
 <template>
   <div v-if="time" id="home" v-bind:class="time">
-    <side-menu :home="home"></side-menu>
+    <!-- <side-menu :home="home"></side-menu> -->
 
     <div class="graphics-container">
       <graphics v-on:hover="productInfo" v-on:select="selectProduct"></graphics>
@@ -23,7 +23,6 @@ import DATA from './../data/texts.js';
 import icon from './icon.vue';
 import graphics from './productGraphics.vue';
 import logo from "./../assets/meonin-logo2.svg";
-import sideMenu from "./SideMenu.vue";
 import plus from "./../assets/plus.svg";
 
 export default {
@@ -32,7 +31,6 @@ export default {
     return {
       logo,
       plus,
-      home: true,
       description: {}
     }
   },
@@ -78,11 +76,7 @@ export default {
     })
 
   },
-  components: {
-    graphics,
-    icon,
-    sideMenu
-  }
+  components: { graphics, icon }
 }
 </script>
 
