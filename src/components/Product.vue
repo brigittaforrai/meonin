@@ -2,27 +2,35 @@
   <div id="product" v-if="product">
 
     <div class="container">
-      <div class="productCategory">
-        <h1 class="categoryName">{{product.title}}</h1>
+      <div class="product-category">
+        <h1 class="category-name">{{product.title}}</h1>
+        <h1 v-if="product.head" class="head">{{product.head}}</h1>
+        <h1 v-if="product.subhead" class="subhead" v-html="product.subhead"></h1>
       </div>
 
       <div class="content">
         <article v-for="item in product.content">
           <div class="image-container">
-            <img class="image" :src="imagePath(item.image, product.title)"></img>
+            <!-- <img class="image" v-bind:class="(item.image).split('.')[0]" :src="imagePath(item.image, product.title)"></img> -->
+            <picture>
+              <source media="(min-width: 1200px)" :srcset="'http://res.cloudinary.com/meonin/image/upload/c_scale,w_1600/' + item.image + ' , http://res.cloudinary.com/meonin/image/upload/c_scale,w_2500/' + item.image + ' 2x'">
+              <source media="(min-width: 992px)" :srcset="'http://res.cloudinary.com/meonin/image/upload/c_scale,w_1000/' + item.image + ' , http://res.cloudinary.com/meonin/image/upload/c_scale,w_2000/' + item.image + ' 2x'">
+              <source media="(min-width: 569px)" :srcset="'http://res.cloudinary.com/meonin/image/upload/c_scale,w_800/' + item.image + ' , http://res.cloudinary.com/meonin/image/upload/c_scale,w_1600/' + item.image + ' 2x'">
+              <img src="http://res.cloudinary.com/meonin/image/upload/c_scale,w_1000/NANA1.jpg" srcset="http://res.cloudinary.com/meonin/image/upload/c_scale,w_2000/NANA1.jpg 2x" alt="a head carved out of wood">
+            </picture>
             <div class="shadow"></div>
           </div>
-          <section class="text" v-bind:id="item.id" @click="toggleExpand()"">
+
+          <section v-if="item[language].title || item[language].text" class="text" v-bind:id="item.id" @click="toggleExpand(item.subContent[language].length)"">
             <h2 v-bind:id="item.id">{{item[language].title}}</h2>
             <p v-bind:id="item.id">{{item[language].text}}</p>
-            <div v-bind:id="item.id" v-bind:class="['plus', 'plus' + item.id]">
+            <div v-if="item.subContent[language].length" v-bind:id="item.id" v-bind:class="['plus', 'plus' + item.id]">
               <icon v-bind:id="item.id" :glyph="plus"></icon>
             </div>
           </section>
-          <section v-bind:class="['expandable', 'expandable' + item.id]">
-            <p>
-              A Lorem Ipsum egy egyszerû szövegrészlete, szövegutánzata a betûszedõ és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban; mikor egy ismeretlen nyomdász összeállította a betûkészletét és egy példa-könyvet vagy szöveget nyomott papírra, ezt használta.
-            </p>
+
+          <section v-if="item.subContent[language].length" v-bind:class="['expandable', 'expandable' + item.id]">
+            <p>{{item.subContent[language]}}</p>
           </section>
         </article>
       </div>
@@ -41,7 +49,8 @@ export default {
   name: 'product',
   data: function() {
     return {
-      plus
+      plus,
+      size: 500
     }
   },
   computed: {
@@ -53,20 +62,23 @@ export default {
     },
   },
   methods: {
-    imagePath: function(image, title) {
-      return require('./../assets/images/' + title + '/' + image);
+    imagePath: function(image, size) {
+      return 'http://res.cloudinary.com/meonin/image/upload/c_scale,w_' + size + '/' + image;
+      // return require('./../assets/images/' + title + '/' + image);
     },
-    toggleExpand() {
-      let id = event.target.id || event.target.parentNode.id;
-      let selector = '.expandable' + id;
-      let target = this.$el.querySelector(selector);
-      let plus = this.$el.querySelector('.plus'+id);
-      if(target.classList.contains('open')) {
-        target.classList.remove('open')
-        plus.classList.remove('close')
-      } else {
-        target.classList.add('open');
-        plus.classList.add('close');
+    toggleExpand(show) {
+      if (show) {
+        let id = event.target.id || event.target.parentNode.id;
+        let selector = '.expandable' + id;
+        let target = this.$el.querySelector(selector);
+        let plus = this.$el.querySelector('.plus'+id);
+        if(target.classList.contains('open')) {
+          target.classList.remove('open')
+          plus.classList.remove('close')
+        } else {
+          target.classList.add('open');
+          plus.classList.add('close');
+        }
       }
     },
   },
@@ -78,7 +90,10 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
+/*@import './../variables.css';*/
+
+
 #product {
   background-color: rgba(245, 245, 245);
   min-height: 100%;
@@ -89,15 +104,33 @@ export default {
     height: auto;
     padding-top: 200px;
     min-height: 100%;
-    .productCategory {
+    .product-category {
       height: 70vh;
-      h1 {
-        font-size: 36px;
+      .category-name {
+        font-size: 22px;
         width: 100%;
         text-align: center;
         color: gray;
         font-weight: normal;
         text-transform: uppercase;
+      }
+      .head {
+        font-size: 60px;
+        width: 100%;
+        text-align: center;
+        color: #666666;
+        font-weight: bold;
+        text-transform: lowercase;
+      }
+      .subhead {
+        font-size: 34px;
+        width: 100%;
+        padding-right: 10%;
+        margin-top: 30px;
+        text-align: right;
+        color: #666666;
+        font-weight: bold;
+        text-transform: lowercase;
       }
     }
     .content {
@@ -197,8 +230,90 @@ export default {
     }
   }
 }
-@keyframes test {
-  /*0% {height: 0px;}*/
-  /*100% {height: 200px;}*/
+
+@media only screen and (max-width: 569px) {
+  #product .container {
+    padding-top: 100px;
+  }
+  #product .container .product-category .category-name {
+    font-size: 22px;
+    width: 100%;
+    text-align: center;
+    color: gray;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+  #product .container .product-category .head {
+    font-size: 60px;
+  }
+  #product .container .product-category .subhead {
+    font-size: 18px;
+  }
+  #product .container .product-category .subhead p {
+    font-size: 16px !important;
+    margin-top: 5px;
+  }
+  #product .container .content article .text {
+    margin-left: 30px;
+    margin-right: 20px;
+    padding-bottom: 70px;
+  }
+  #product .container .content article .text h2 {
+    width: 80%;
+  }
+  #product .container .content article .text p {
+    width: 100%;
+  }
+  #product .container .content article .text .plus {
+    right: 10%;
+    bottom: 15px;
+  }
+  #product .container .content article .text .plus.close {
+    bottom: -50px;
+  }
+  #product .container .content article .text .plus svg {
+    width: 30px;
+    height: 30px;
+  }
+  #product .container .content article .expandable p {
+    width: 100%;
+    margin-left: 0px;
+    padding-top: 70px;
+  }
+  #product .container .content article .expandable.open {
+    padding-left: 30px;
+    padding-right: 20px;
+  }
+  #product .container .content article .expandable {
+    padding-left: 30px;
+    padding-right: 20px;
+  }
 }
+
+@media only screen and (min-width: 569px) and (max-width: 992px){
+  #product {
+    /*background-color: red;*/
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px){
+  #product {
+    /*background-color: blue;*/
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1200px){
+  #product {
+    /*background-color: yellow;*/
+    width: 100%;
+  }
+}
+
+
+
+
+
+
 </style>

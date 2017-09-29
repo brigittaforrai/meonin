@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import store from './../vuex/store.js';
 import Router from 'vue-router';
-import Migo from '@/components/Migo';
-import Blog from '@/components/Blog';
 import Home from '@/components/Home';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
@@ -17,16 +15,6 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home
-    },
-    {
-      path: '/migo',
-      name: 'Migo',
-      component: Migo
-    },
-    {
-      path: '/blog',
-      name: 'Blog',
-      component: Blog
     },
     {
       path: '/about',
@@ -46,6 +34,6 @@ export default new Router({
         store.commit('m_selectProduct', to.params.productId);
         next();
       }
-    },
+    }
   ]
 })

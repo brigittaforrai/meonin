@@ -1,13 +1,13 @@
 <template>
   <div id="contact">
-    <side-menu></side-menu>
     <contact-form></contact-form>
+    <google-map :name="'meonin'"></google-map>
   </div>
 </template>
 
 <script>
-import SideMenu from './SideMenu.vue';
 import ContactForm from './ContactForm.vue';
+import GoogleMap from './googleMap.vue';
 
 export default {
   name: 'contact',
@@ -16,8 +16,8 @@ export default {
     }
   },
   components: {
-    SideMenu,
-    ContactForm
+    ContactForm,
+    GoogleMap
   }
 }
 </script>

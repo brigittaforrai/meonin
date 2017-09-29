@@ -19,7 +19,7 @@ export default {
 <style lang='postcss' scoped>
 #footer {
   width: 100%;
-  height: 150px;
+  height: 500px;
   background-color: white;
   h1 {
     width: 400px;

@@ -68,9 +68,10 @@ export default {
 <style lang="postcss" scoped>
 #contact-form {
   width: 50%;
-  height: 300px;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 100px;
   h2 {
     margin-left: auto;
     margin-right: auto;

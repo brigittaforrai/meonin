@@ -1,29 +1,31 @@
 <template>
   <div id="side-menu" v-bind:class="home ? time : page">
+
+    <!-- LOGO -->
     <router-link to="/home" class="link">
       <div class="logo">
         <icon class="logo-svg" width="45" height="45" :glyph="logo"></icon>
       </div>
     </router-link>
+
     <ul class="menu">
+      <!-- PRODUCTS -->
       <li class="menu-elem" v-for="link in links" v-if="links && !home" @click="select(link)">
         <router-link v-bind:class=" active(link) ? 'active' : 'inactive'" :to="{ name: 'Products', params: { productId: link } }">{{link}}</router-link>
       </li>
       <li class="menu-elem divider" v-if="!home">-</li>
-      <!-- <li class="menu-elem" v-if="home">
-        <router-link to="/migo" class="link">migo</router-link>
-      </li> -->
-      <li class="menu-elem">
-        <router-link v-bind:class=" active('blog') ? 'active' : 'inactive'" to="/blog" class="link">blog</router-link>
-      </li>
+
+      <!-- ABOUT -->
       <li class="menu-elem">
         <router-link v-bind:class=" active('about') ? 'active' : 'inactive'" to="/about" class="link">about</router-link>
       </li>
+      <!-- CONTACT -->
       <li class="menu-elem">
         <router-link v-bind:class=" active('contact') ? 'active' : 'inactive'" to="/contact" class="link">contact</router-link>
       </li>
+      <!-- LANGUAGE -->
       <li class="menu-elem lang">
-        <span class="lang" @click="setLanguage()">{{language}}</span>
+        <span class="lang" @click="setLanguage()">{{languageSwitch}}</span>
       </li>
 
     </ul>
@@ -36,7 +38,7 @@ import logo from "./../assets/meonin-logo2.svg";
 
 export default {
   name: 'sideMenu',
-  props: ['home', 'selected'],
+  props: ['home'],
   data () {
     return {
       logo,
@@ -49,6 +51,9 @@ export default {
     },
     language: function() {
       return this.$store.getters.g_language;
+    },
+    languageSwitch () {
+      return this.language === 'eng' ? 'hun' : 'eng';
     },
     time: function() {
       return this.$store.getters.g_time;
@@ -129,45 +134,10 @@ export default {
     }
   }
 }
-.night ul li {
-  .lang {
-    color: white;
-  }
-  .lang:hover {
-    color: gray;
-  }
-  a:link {
-    color: white;
-  }
-  a:visited {
-    color: white;
-  }
-  a:hover {
-    color: gray;
-  }
-}
-.night .logo svg {
-  fill: white;
-}
 
-.day ul li, .product ul li  {
-  .lang {
-    color: black;
+@media only screen and (max-width: 568px) {
+  #side-menu {
+    display: none;
   }
-  .lang:hover {
-    color: gray;
-  }
-  a:link {
-    color: black;
-  }
-  a:visited {
-    color: black;
-  }
-  a:hover {
-    color: gray;
-  }
-}
-.day .logo svg {
-  fill: black;
 }
 </style>

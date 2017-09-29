@@ -1,5 +1,5 @@
 <template>
-  <div id="graphics" v-bind:class="time">
+  <div id="graphics" v-bind:class="time" v-bind:style="{left: position + 'px'}">
     <icon class="icon nomad" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('nomad')" @click.native="selectProduct('nomad')" :glyph="'#nomad_'+time"></icon>
     <icon class="icon contour" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('contour')" @click.native="selectProduct('contour')" :glyph="'#contour_'+ time"></icon>
     <icon class="icon uhuu" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('uhuu')" @click.native="selectProduct('uhuu')" :glyph="'#uhuu_'+ time"></icon>
@@ -26,6 +26,7 @@ import whole_night from './../assets/graphics/whole_night.svg';
 
 export default {
   name: 'graphics',
+  props: ['position'],
   data: function() {
     return {
       nomad_day,
@@ -48,12 +49,10 @@ export default {
     }
   },
   methods: {
-    selectProduct: function(productName) {
-      this.$emit('select', productName);
-    },
     mouseOver: function(productName) {
-      this.$store.commit('m_hoverProduct', productName);
-      this.$emit('hover', productName);
+      this.setActive(productName);
+    },
+    setActive (productName) {
       let icons = document.querySelectorAll('.icon');
       icons.forEach((icon) => {
         if (icon.classList.contains(productName)) {
@@ -65,8 +64,12 @@ export default {
         }
       });
     },
+    selectProduct: function(productName) {
+      this.$store.commit('m_hoverProduct', productName);
+      this.setActive(productName);
+      this.$emit('select', productName);
+    },
     mouseOut () {
-      console.log('leave');
       let icons = document.querySelectorAll('.icon');
       icons.forEach((icon) => {
         icon.classList.remove('active');
@@ -74,9 +77,7 @@ export default {
       });
     }
   },
-  components: {
-    icon
-  }
+  components: { icon }
 }
 </script>
 
@@ -122,6 +123,22 @@ export default {
   .nana {
     left: 1135px;
     bottom: -87px;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  #graphics {
+    width: calc(6 * 100vw);
+    height: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  #graphics svg {
+    position: static;
+    width: 100vw;
+    height: 200px;
   }
 }
 </style>
