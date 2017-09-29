@@ -11,7 +11,6 @@
       <div class="content">
         <article v-for="item in product.content">
           <div class="image-container">
-            <!-- <img class="image" v-bind:class="(item.image).split('.')[0]" :src="imagePath(item.image, product.title)"></img> -->
             <picture>
               <source media="(min-width: 1200px)" :srcset="'http://res.cloudinary.com/meonin/image/upload/c_scale,w_1600/' + item.image + ' , http://res.cloudinary.com/meonin/image/upload/c_scale,w_2500/' + item.image + ' 2x'">
               <source media="(min-width: 992px)" :srcset="'http://res.cloudinary.com/meonin/image/upload/c_scale,w_1000/' + item.image + ' , http://res.cloudinary.com/meonin/image/upload/c_scale,w_2000/' + item.image + ' 2x'">
@@ -62,10 +61,6 @@ export default {
     },
   },
   methods: {
-    imagePath: function(image, size) {
-      return 'http://res.cloudinary.com/meonin/image/upload/c_scale,w_' + size + '/' + image;
-      // return require('./../assets/images/' + title + '/' + image);
-    },
     toggleExpand(show) {
       if (show) {
         let id = event.target.id || event.target.parentNode.id;
