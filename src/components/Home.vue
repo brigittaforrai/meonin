@@ -1,12 +1,12 @@
 <template>
   <div v-if="time" id="home" v-bind:class="time">
-    <!-- <side-menu :home="home"></side-menu> -->
 
-    <div class="description-box" v-if="description.title">
+    <div class="description-box">
       <h2 class="title">{{description.title}}</h2>
       <p class="text">{{description[language]}}</p>
       <div @click="selectProduct(description.title)" class="plus">
-        <icon :glyph="plus"></icon><span>more</span>
+        <icon :glyph="plus" v-if="description.title"></icon>
+        <span class="more" v-if="description.title">more</span>
       </div>
     </div>
 
@@ -14,8 +14,8 @@
       <button class="left" v-bind:class="time" @click="next"><</button>
       <graphics v-on:select="productInfo" :position="position"></graphics>
       <button class="right" v-bind:class="time" @click="prev">></button>
+      <div class="line"></div>
     </div>
-    <div class="line"></div>
 
   </div>
 </template>
@@ -108,17 +108,17 @@ export default {
     }
   }
   #home {
-    height: 100%;
-    min-height: 100%;
+    height: 100vh;
     width: 100%;
     padding-bottom: 50px;
     overflow: hidden;
-    position: fixed;
+    position: relative;
     .graphics-container {
       position: absolute;
-      bottom: 150px;
+      bottom: 100px;
       left: 0px;
       width: 100%;
+      height: 200px;
     }
     button {
       background-color: rgba(0, 0, 0, 0);
@@ -140,7 +140,7 @@ export default {
     }
     .line {
       position: absolute;
-      bottom: 150px;
+      bottom: 4px;
       height: 2px;
       width: 100%;
     }
@@ -151,13 +151,19 @@ export default {
       width: 33%;
       height: 50px;
       .plus {
-        width: 15px;
+        width: auto;
         height: 15px;
         margin-top: 25px;
         cursor: pointer;
+        display: inline-block;
         svg {
           width: 15px;
           height: 15px;
+        }
+        .more {
+          display: inline-block;
+          padding-left: 5px;
+          padding-top: -5px;
         }
       }
     }
@@ -193,33 +199,36 @@ export default {
       min-height: 100vh;
       overflow: auto;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       padding-bottom: 0px;
     }
     #home .description-box {
       width: 100%;
+      min-height: 50vh;
       height: auto;
-      left: 0px;
-      top: 0px;
       padding-top: 100px;
-      padding-left: 17%;
+      padding-left: 10%;
       padding-bottom: 50px;
-      padding-right: 20px;
-      position: fixed;
+      padding-right: 10%;
+      position: static;
       z-index: 5;
-      /*border-bottom: 1px solid lightgray;*/
+      display: block;
     }
     #home .graphics-container {
-      bottom: 0px;
-      left: 0px;
       width: 100%;
       height: 200px;
       overflow: hidden;
+      position: relative;
+      display: block;
+      bottom: 5px;
     }
     #home .graphics-container button {
       display: inline-block;
     }
     #home .line {
-      bottom: 20px;
+      bottom: 0px;
       height: 2px;
       width: 100%;
     }

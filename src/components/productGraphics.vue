@@ -1,11 +1,7 @@
 <template>
+  <!-- TODO day iconokat is pozicionalni, pontositani -->
   <div id="graphics" v-bind:class="time" v-bind:style="{left: position + 'px'}">
-    <icon class="icon nomad" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('nomad')" @click.native="selectProduct('nomad')" :glyph="'#nomad_'+time"></icon>
-    <icon class="icon contour" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('contour')" @click.native="selectProduct('contour')" :glyph="'#contour_'+ time"></icon>
-    <icon class="icon uhuu" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('uhuu')" @click.native="selectProduct('uhuu')" :glyph="'#uhuu_'+ time"></icon>
-    <icon class="icon sideboard" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('sideboard')" @click.native="selectProduct('sideboard')" :glyph="'#sideboard_'+ time"></icon>
-    <icon class="icon whole" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('whole')" @click.native="selectProduct('whole')" :glyph="'#whole_'+ time"></icon>
-    <icon class="icon nana" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('nana')" @click.native="selectProduct('nana')" :glyph="'#nana_'+ time"></icon>
+    <icon class="icon nomad" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('nomad')" @click.native="selectProduct('nomad')" :glyph="'#nomad_'+time"></icon><icon class="icon contour" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('contour')" @click.native="selectProduct('contour')" :glyph="'#contour_'+ time"></icon><icon class="icon sideboard" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('sideboard')" @click.native="selectProduct('sideboard')" :glyph="'#sideboard_'+ time"></icon><icon class="icon nana" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('nana')" @click.native="selectProduct('nana')" :glyph="'#nana_'+ time"></icon><icon class="icon uhuu" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('uhuu')" @click.native="selectProduct('uhuu')" :glyph="'#uhuu_'+ time"></icon><icon class="icon whole" v-on:mouseleave.native="mouseOut()" v-on:mouseover.native="mouseOver('whole')" @click.native="selectProduct('whole')" :glyph="'#whole_'+ time"></icon>
   </div>
 </template>
 
@@ -84,15 +80,16 @@ export default {
 <style lang='postcss' scoped>
 #graphics {
   min-width: 100%;
-  width: auto;
-  height: 250px;
-  position: relative;
+  width: calc(6 * 300px);
+  height: auto;
+  position: absolute;
+  bottom: 0px;
   svg {
-    position: absolute;
     opacity: 1;
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 200px;
     transition: opacity 0.5s;
+    display: inline-block;
   }
   .active {
     opacity: 1;
@@ -100,36 +97,12 @@ export default {
   .inactive {
     opacity: 0.2;
   }
-  .nomad {
-    left: 10px;
-    bottom: 0px;
-  }
-  .contour {
-    left: 210px;
-    bottom: -47px;
-  }
-  .uhuu {
-    left: 395px;
-    bottom: -118px;
-  }
-  .sideboard {
-    left: 650px;
-    bottom: -98px;
-  }
-  .whole {
-    left: 890px;
-    bottom: -108px;
-  }
-  .nana {
-    left: 1135px;
-    bottom: -87px;
-  }
 }
 
 @media only screen and (max-width: 568px) {
   #graphics {
     width: calc(6 * 100vw);
-    height: 100%;
+    height: 200px;
     position: absolute;
     display: flex;
     flex-direction: row;
