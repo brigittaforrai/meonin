@@ -1,7 +1,7 @@
 <template>
   <div id="product" v-if="product">
 
-    <div class="container">
+    <div class="container-p">
       <div class="product-category">
         <h1 class="category-name">{{product.title}}</h1>
         <h1 v-if="product.head" class="head">{{product.head}}</h1>
@@ -94,7 +94,7 @@ export default {
   min-height: 100%;
   height: auto;
   width: 100%;
-  .container {
+  .container-p {
     width: 100%;
     height: auto;
     padding-top: 200px;

@@ -2,20 +2,26 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import store from './vuex/store.js';
-// import VueLocalStorage from 'vue-ls';
+import BootstrapVue from 'bootstrap-vue'
 import VeeValidate from 'vee-validate';
 import VueResource from 'vue-resource';
+// import VueSmoothScroll from 'vue-smoothscroll';
+// import VueLocalStorage from 'vue-ls';
 
 let options = {
   namespace: 'vuejs__'
 };
 
+Vue.use(BootstrapVue);
 Vue.use(VueResource);
 Vue.use(VeeValidate);
+// Vue.use(VueSmoothScroll);
 // Vue.use(VueLocalStorage, options);
 Vue.config.productionTip = false;
-
 Vue.http.headers.common['Access-Control-Allow-Origin'] = '*';
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 /* eslint-disable no-new */
 new Vue({

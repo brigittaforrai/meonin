@@ -49,6 +49,8 @@ html, body {
   padding: 0px;
   height: 100%;
   overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 * {
   margin: 0px;

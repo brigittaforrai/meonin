@@ -1,37 +1,22 @@
 <template>
   <div id="mobile-menu" v-bind:class="home ? time : page">
 
-    <ul class="menu" v-if="open">
-      <!-- PRODUCTS -->
-      <li class="menu-elem" v-for="link in links" v-if="links && !home" @click="select(link)">
-        <router-link v-bind:class=" active(link) ? 'active' : 'inactive'" :to="{ name: 'Products', params: { productId: link } }">{{link}}</router-link>
-      </li>
-      <li class="menu-elem divider" v-for="link in links" v-if="!home">-</li>
-      <!-- ABOUT -->
-      <div class="br"></div>
-      <li class="menu-elem">
-        <router-link v-bind:class=" active('about') ? 'active' : 'inactive'" to="/about" class="link">about</router-link>
-      </li><div class="br"></div>
-      <!-- CONTACT -->
-      <li class="menu-elem">
-        <router-link v-bind:class=" active('contact') ? 'active' : 'inactive'" to="/contact" class="link">contact</router-link>
-      </li>
-      <div class="br"></div>
-      <!-- LANGUAGE -->
-      <li class="menu-elem lang">
-        <span class="lang" @click="setLanguage()">{{language}}</span>
-      </li>
-      <div class="br"></div>
+    <b-navbar toggleable="md" type="light" variant="info">
 
-    </ul>
-    <!-- LOGO -->
-    <router-link to="/home" class="link home">
-      <div class="logo">
-        <icon class="logo-svg" width="45" height="45" :glyph="logo"></icon>
-      </div>
-    </router-link>
-    <!-- HAMBURGER -->
-    <div class="hamburger" @click="toggleMenu()"></div>
+      <b-navbar-brand href="#">NavBar</b-navbar-brand>
+      <b-nav-toggle target="nav_collapse"></b-nav-toggle>
+      <b-collapse is-nav id="nav_collapse">
+
+        <b-nav is-nav-bar>
+          <b-nav-item href="#">Link</b-nav-item>
+          <b-nav-item href="#">Disabled</b-nav-item>
+          <b-nav-item href="#">Link</b-nav-item>
+          <b-nav-item href="#">Disabled</b-nav-item>
+        </b-nav>
+
+      </b-collapse>
+    </b-navbar>
+
   </div>
 </template>
 
@@ -99,31 +84,22 @@ export default {
   top: 0px;
   left: 0px;
   width: 100%;
-  height: 60px;
-  display: flex;
-  padding: 10px;
-  justify-content: space-between;
-  flex-direction: row;
-  z-index: 15;
-  .hamburger {
-    width: 50px;
-    height: 50px;
-  }
-  .home, .hamburger {
-    z-index: 20;
-  }
-  ul {
-    /*display: none;*/
-    position: absolute;
+}
+.navbar {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0px;
+}
+.bg-info {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+ul.navbar-nav  {
     width: 100%;
     height: 100vh;
     padding: 20px;
-    padding-top: 60px;
+    /*padding-top: 60px;*/
     text-align: center;
-    top: 0px;
-    left: 0px;
     background-color: white;
-    opacity: 0.5;
     .br {
       background-color: rgb(230, 230, 230);
       width: 100%;
@@ -140,24 +116,20 @@ export default {
       list-style-type: none;
     }
   }
-}
-
-@media only screen and (min-width: 568px) and (max-width: 992px){
-  #mobile-menu {
-    display: none;
+  @media only screen and (min-width: 568px) and (max-width: 992px){
+    #mobile-menu {
+      display: none;
+    }
   }
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1200px){
-  #mobile-menu {
-    display: none;
+  @media only screen and (min-width: 992px) and (max-width: 1200px){
+    #mobile-menu {
+      display: none;
+    }
   }
-}
-
-@media only screen and (min-width: 1200px){
-  #mobile-menu {
-    display: none;
+  @media only screen and (min-width: 1200px){
+    #mobile-menu {
+      display: none;
+    }
   }
-}
 
 </style>

@@ -203,7 +203,6 @@ export default {
       padding-bottom: 50px;
       padding-right: 20px;
       position: fixed;
-      background-color: white;
       z-index: 5;
       /*border-bottom: 1px solid lightgray;*/
     }
