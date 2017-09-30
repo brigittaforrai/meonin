@@ -15,7 +15,7 @@
               <source media="(min-width: 1200px)" :srcset="'http://res.cloudinary.com/meonin/image/upload/c_scale,w_1600/' + item.image + ' , http://res.cloudinary.com/meonin/image/upload/c_scale,w_2500/' + item.image + ' 2x'">
               <source media="(min-width: 992px)" :srcset="'http://res.cloudinary.com/meonin/image/upload/c_scale,w_1000/' + item.image + ' , http://res.cloudinary.com/meonin/image/upload/c_scale,w_2000/' + item.image + ' 2x'">
               <source media="(min-width: 569px)" :srcset="'http://res.cloudinary.com/meonin/image/upload/c_scale,w_800/' + item.image + ' , http://res.cloudinary.com/meonin/image/upload/c_scale,w_1600/' + item.image + ' 2x'">
-              <img src="http://res.cloudinary.com/meonin/image/upload/c_scale,w_1000/NANA1.jpg" srcset="http://res.cloudinary.com/meonin/image/upload/c_scale,w_2000/NANA1.jpg 2x" alt="a head carved out of wood">
+              <img src="https://res.cloudinary.com/meonin/image/upload/c_scale,w_1000/NANA1.jpg" srcset="http://res.cloudinary.com/meonin/image/upload/c_scale,w_2000/NANA1.jpg 2x" alt="a head carved out of wood">
             </picture>
             <div class="shadow"></div>
           </div>
