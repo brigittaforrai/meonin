@@ -99,7 +99,23 @@ export default {
   }
 }
 
-@media only screen and (max-width: 568px) {
+@media only screen and (max-width: 320px) {
+  #graphics {
+    width: calc(6 * 100vw);
+    height: 130px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  #graphics svg {
+    position: static;
+    width: 100vw;
+    height: 130px;
+  }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 568px) {
   #graphics {
     width: calc(6 * 100vw);
     height: 200px;

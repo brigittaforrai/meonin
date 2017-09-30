@@ -1,6 +1,9 @@
 <template>
   <div id="footer">
-    <h1>footer...coming soon</h1>
+    <p>footer content</p>
+    <p>footer content</p>
+    <p>footer content</p>
+    <p>footer content</p>
   </div>
 </template>
 
@@ -19,14 +22,15 @@ export default {
 <style lang='postcss' scoped>
 #footer {
   width: 100%;
-  height: 500px;
+  height: 150px;
   background-color: white;
-  h1 {
-    width: 400px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 5px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  p {
+    margin-bottom: 0px;
+    padding: 3px;
   }
 }
 </style>

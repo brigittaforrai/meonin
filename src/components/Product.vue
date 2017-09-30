@@ -12,12 +12,13 @@
         <article v-for="item in product.content">
           <div class="image-container">
             <picture>
-              <source media="(min-width: 1200px)" :srcset="'https://res.cloudinary.com/meonin/image/upload/c_scale,w_1600/' + item.image + ' , https://res.cloudinary.com/meonin/image/upload/c_scale,w_2500/' + item.image + ' 2x'">
-              <source media="(min-width: 992px)" :srcset="'https://res.cloudinary.com/meonin/image/upload/c_scale,w_1000/' + item.image + ' , https://res.cloudinary.com/meonin/image/upload/c_scale,w_2000/' + item.image + ' 2x'">
-              <source media="(min-width: 569px)" :srcset="'https://res.cloudinary.com/meonin/image/upload/c_scale,w_800/' + item.image + ' , https://res.cloudinary.com/meonin/image/upload/c_scale,w_1600/' + item.image + ' 2x'">
-              <img src="https://res.cloudinary.com/meonin/image/upload/c_scale,w_1000/NANA1.jpg" srcset="https://res.cloudinary.com/meonin/image/upload/c_scale,w_2000/NANA1.jpg 2x" alt="a head carved out of wood">
+              <source media="(min-width: 1200px)" :srcset="'https://res.cloudinary.com/meonin/image/upload/c_scale,w_1800/' + item.image + ' , https://res.cloudinary.com/meonin/image/upload/c_scale,w_3600/' + item.image + ' 2x'">
+              <source media="(min-width: 992px)" :srcset="'https://res.cloudinary.com/meonin/image/upload/c_scale,w_1200/' + item.image + ' , https://res.cloudinary.com/meonin/image/upload/c_scale,w_2400/' + item.image + ' 2x'">
+              <source media="(min-width: 569px)" :srcset="'https://res.cloudinary.com/meonin/image/upload/c_scale,w_992/' + item.image + ' , https://res.cloudinary.com/meonin/image/upload/c_scale,w_1900/' + item.image + ' 2x'">
+              <source media="(min-width: 256px)" :srcset="'https://res.cloudinary.com/meonin/image/upload/c_scale,w_569/' + item.image + ' , https://res.cloudinary.com/meonin/image/upload/c_scale,w_1100/' + item.image + ' 2x'">
+              <img :src="'https://res.cloudinary.com/meonin/image/upload/c_scale,w_1000/' + item.image" :srcset="'https://res.cloudinary.com/meonin/image/upload/c_scale,w_2000/' + item.image + ' 2x'" alt="a head carved out of wood">
             </picture>
-            <div class="shadow"></div>
+            <!-- <div class="shadow"></div> -->
           </div>
 
           <section v-if="item[language].title || item[language].text" class="text" v-bind:id="item.id" @click="toggleExpand(item.subContent[language].length)"">
@@ -209,6 +210,7 @@ export default {
             margin-left: 55%;
             padding-top: 100px;
             padding-bottom: 50px;
+            margin-bottom: 0px;
             opacity: 0;
             transition: all .7s ease;
           }
@@ -226,8 +228,8 @@ export default {
   }
 }
 
-@media only screen and (max-width: 569px) {
-  #product .container {
+/*@media only screen and (max-width: 320px) {
+  #product .container-p {
     padding-top: 100px;
   }
   #product .container .product-category .category-name {
@@ -280,6 +282,82 @@ export default {
     padding-right: 20px;
   }
   #product .container .content article .expandable {
+    padding-left: 30px;
+    padding-right: 20px;
+  }
+}*/
+
+@media only screen and (max-width: 568px) {
+/*@media only screen and (min-width: 321px) and (max-width: 568px) {*/
+  #product .container-p {
+    padding-top: 54px;
+    position: relative;
+  }
+  #product .container-p .product-category .category-name {
+    font-size: 22px;
+    width: 100%;
+    text-align: center;
+    color: gray;
+    font-weight: 100;
+    text-transform: uppercase;
+  }
+  #product .container-p .product-category {
+    height: auto;
+    padding: 20px;
+    background-color: white;
+    border-top: 1px solid rgba(200, 200, 200, 0.2);
+  }
+  #product .container-p .product-category .category-name {
+    font-size: 16px;
+  }
+  #product .container-p .product-category .head {
+    font-size: 30px;
+    font-weight: normal;
+  }
+  #product .container-p .product-category .subhead {
+    font-size: 18px;
+    margin-top: 20px;
+    display: none;
+  }
+  #product .container-p .product-category .subhead p {
+    font-size: 16px !important;
+    margin-top: 5px;
+    display: none;
+  }
+  #product .container-p .content article .text {
+    margin-left: 30px;
+    margin-right: 20px;
+    padding-bottom: 70px;
+    padding-top: 30px;
+  }
+  #product .container-p .content article .text h2 {
+    width: 80%;
+    font-weight: normal;
+  }
+  #product .container-p .content article .text p {
+    width: 100%;
+  }
+  #product .container-p .content article .text .plus {
+    right: 7px;
+    bottom: 20px;
+  }
+  #product .container-p .content article .text .plus.close {
+    bottom: -50px;
+  }
+  #product .container-p .content article .text .plus svg {
+    width: 25px;
+    height: 25px;
+  }
+  #product .container-p .content article .expandable p {
+    width: 100%;
+    margin-left: 0px;
+    padding-top: 70px;
+  }
+  #product .container-p .content article .expandable.open {
+    padding-left: 30px;
+    padding-right: 20px;
+  }
+  #product .container-p .content article .expandable {
     padding-left: 30px;
     padding-right: 20px;
   }

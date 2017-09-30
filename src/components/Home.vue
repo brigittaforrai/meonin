@@ -101,12 +101,6 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-  @media (--fk-extra-small-screen), (--fk-small-screen) {
-    #home {
-      height: 20%;
-      min-height: 20%;
-    }
-  }
   #home {
     height: 100vh;
     width: 100%;
@@ -192,11 +186,48 @@ export default {
       background-color: white;
     }
   }
-
-  @media only screen and (max-width: 568px) {
+  @media only screen and (max-width: 320px) {
     #home {
+      height: 100%;
+      overflow: auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 0px;
+    }
+    #home .description-box {
+      width: 100%;
+      min-height: 50vh;
       height: auto;
-      min-height: 100vh;
+      padding-top: 80px;
+      padding-left: 10%;
+      padding-bottom: 20px;
+      padding-right: 10%;
+      position: static;
+      z-index: 5;
+      display: block;
+    }
+    #home .graphics-container {
+      width: 100%;
+      height: 130px;
+      overflow: hidden;
+      position: relative;
+      display: block;
+      bottom: 5px;
+    }
+    #home .graphics-container button {
+      display: inline-block;
+    }
+    #home .line {
+      bottom: 0px;
+      height: 2px;
+      width: 100%;
+    }
+  }
+  @media only screen and (min-width: 321px) and (max-width: 568px) {
+    #home {
+      height: 100%;
       overflow: auto;
       position: relative;
       display: flex;

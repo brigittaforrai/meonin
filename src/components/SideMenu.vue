@@ -118,10 +118,6 @@ export default {
       a:visited {
         text-decoration: none;
       }
-      a:hover {
-        text-decoration: underline;
-        color: black;
-      }
       a:link.active {
         text-decoration: underline;
       }

@@ -34,23 +34,25 @@ export default {
 <style lang="postcss">
 #app {
   /*TODO fontokat eloszor betolteni*/
-  min-height: 100%;
-  /*height: 100%;*/
+  height: 100%;
   font-family: 'Raleway', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: left;
   font-size: 16px;
   overflow-x: hidden;
   overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
+  /*overflow-scrolling: touch;*/
+}
+body {
+  overflow-scrolling: touch;
 }
 html, body {
+  height: 100%;
   width: 100%;
-  min-height: 100%;
   margin: 0px;
   padding: 0px;
-  /*height: 100%;*/
+}
+html {
+  height: 100%;
 }
 * {
   margin: 0px;
@@ -70,6 +72,7 @@ p {
   text-align: left;
   font-weight: normal;
   line-height: 150%;
+  margin-bottom: 0px;
 }
 * > svg {
   transform-origin: left bottom;
@@ -91,10 +94,10 @@ p {
     color: gray;
   }
   a:link {
-
+    color: white
   }
   a:visited {
-
+    color: white
   }
   a:hover {
     color: gray;
@@ -127,10 +130,10 @@ p {
     color: gray;
   }
   a:link {
-
+    color: black;
   }
   a:visited {
-
+    color: black;
   }
   a:hover {
     color: gray;
