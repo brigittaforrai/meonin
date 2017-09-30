@@ -190,8 +190,10 @@ export default {
   @media only screen and (max-width: 568px) {
     #home {
       height: auto;
+      min-height: 100vh;
       overflow: auto;
-      position: static;
+      position: relative;
+      padding-bottom: 0px;
     }
     #home .description-box {
       width: 100%;
