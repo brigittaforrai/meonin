@@ -12,22 +12,25 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      alias: '/',
+      alias: '/meonin/',
       path: '/home',
       name: 'Home',
       component: Home
     },
     {
+      alias: '/meonin/about',
       path: '/about',
       name: 'About',
       component: About
     },
     {
+      alias: '/meonin/contact',
       path: '/contact',
       name: 'Contact',
       component: Contact
     },
     {
+      alias: '/meonin/products/:productId',
       path: '/products/:productId',
       name: 'Products',
       component: Product,

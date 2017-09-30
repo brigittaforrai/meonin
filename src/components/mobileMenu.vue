@@ -24,9 +24,9 @@
             v-if="links"
             >{{link}}</b-nav-item>
 
-          <b-nav-item :to="{name: 'About'}" v-bind:class=" active('about') ? 'active' : 'inactive'">about</b-nav-item>
+          <b-nav-item :to="{name: 'About'}" v-bind:class=" active('about') ? 'active' : 'inactive'" @click="toggleMenuButton()">about</b-nav-item>
 
-          <b-nav-item :to="{name: 'Contact'}" v-bind:class=" active('contact') ? 'active' : 'inactive'">contact</b-nav-item>
+          <b-nav-item :to="{name: 'Contact'}" v-bind:class=" active('contact') ? 'active' : 'inactive'" @click="toggleMenuButton()">contact</b-nav-item>
 
           <b-nav-item class="lang" @click="setLanguage()">{{languageSwitch}}</b-nav-item>
         </b-nav>
@@ -82,9 +82,11 @@ export default {
     select: function(product) {
       this.removeClasses();
       this.$store.commit('m_selectProduct', product);
+      this.toggleMenuButton();
     },
     setLanguage: function() {
       this.$store.commit('m_changeLanguage');
+      this.toggleMenuButton();
     },
     removeClasses() {
       if(this.$parent.$el) {
