@@ -40,10 +40,10 @@ export default {
   font-size: 16px;
   overflow-x: hidden;
   overflow-y: scroll;
-  /*overflow-scrolling: touch;*/
+  -webkit-overflow-scrolling: touch;
 }
 body {
-  overflow-scrolling: touch;
+  /*overflow-scrolling: touch;*/
 }
 html, body {
   height: 100%;
