@@ -9,6 +9,7 @@ import Product from '@/components/Product';
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       alias: '/',
@@ -35,5 +36,8 @@ export default new Router({
         next();
       }
     }
-  ]
-})
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  },
+});

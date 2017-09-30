@@ -109,7 +109,7 @@ export default {
   }
   #home {
     height: 100%;
-    min-height: 700px;
+    min-height: 100%;
     width: 100%;
     padding-bottom: 50px;
     overflow: hidden;

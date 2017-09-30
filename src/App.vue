@@ -35,22 +35,22 @@ export default {
 #app {
   /*TODO fontokat eloszor betolteni*/
   min-height: 100%;
-  height: 100%;
+  /*height: 100%;*/
   font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
   font-size: 16px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 html, body {
   width: 100%;
   min-height: 100%;
   margin: 0px;
   padding: 0px;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
+  /*height: 100%;*/
 }
 * {
   margin: 0px;
@@ -76,9 +76,11 @@ p {
 }
 .component-fade-enter-active, .component-fade-leave-active {
   transition: opacity .3s ease-in;
+  min-height: 100%;
 }
 .component-fade-enter, .component-fade-leave-to {
   opacity: 0;
+  min-height: 100%;
 }
 /*NIGHT*/
 .night ul li {
