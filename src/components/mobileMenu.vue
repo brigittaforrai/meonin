@@ -2,7 +2,7 @@
   <div id="mobile-menu" v-bind:class="time">
     <b-navbar toggleable="md" :type="time === 'day' ? 'dark' : 'light'" variant="info">
       <!-- home -->
-      <b-navbar-brand :to="{name: 'Home'} class="link home">
+      <b-navbar-brand :to="{name: 'Home'}" class="link home">
          <icon class="mobile-logo-svg" width="34" height="34" :glyph="logo"></icon>
       </b-navbar-brand>
       <!-- hamburger -->
@@ -24,9 +24,9 @@
             v-if="links"
             >{{link}}</b-nav-item>
 
-          <b-nav-item :to="{name: 'About'} v-bind:class=" active('about') ? 'active' : 'inactive'">about</b-nav-item>
+          <b-nav-item :to="{name: 'About'}" v-bind:class=" active('about') ? 'active' : 'inactive'">about</b-nav-item>
 
-          <b-nav-item :to="{name: 'Contact'} v-bind:class=" active('contact') ? 'active' : 'inactive'">contact</b-nav-item>
+          <b-nav-item :to="{name: 'Contact'}" v-bind:class=" active('contact') ? 'active' : 'inactive'">contact</b-nav-item>
 
           <b-nav-item class="lang" @click="setLanguage()">{{languageSwitch}}</b-nav-item>
         </b-nav>
