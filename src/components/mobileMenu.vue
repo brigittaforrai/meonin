@@ -1,12 +1,12 @@
 <template>
-  <div id="mobile-menu" v-bind:class="home ? time : page">
-    <b-navbar toggleable="md" type="light" variant="info">
+  <div id="mobile-menu" v-bind:class="time">
+    <b-navbar toggleable="md" :type="time === 'day' ? 'dark' : 'light'" variant="info">
       <!-- home -->
       <b-navbar-brand to="/home" class="link home">
-         <icon class="logo-svg" width="45" height="45" :glyph="logo"></icon>
+         <icon class="mobile-logo-svg" width="34" height="34" :glyph="logo"></icon>
       </b-navbar-brand>
       <!-- hamburger -->
-      <b-nav-toggle target="nav_collapse">
+      <b-nav-toggle target="nav_collapse" @click.native="toggleMenuButton()">
         <div class="hamburger">
           <div class="line1"></div>
           <div class="line2"></div>
@@ -46,7 +46,7 @@ export default {
   data () {
     return {
       logo,
-      page: 'product'
+      page: 'product',
     }
   },
   computed: {
@@ -59,11 +59,23 @@ export default {
     languageSwitch () {
       return this.language === 'eng' ? 'hun' : 'eng';
     },
+    // TODO time-ot egyszer kerjuk le az app-ban aztan bindoljuk le
     time: function() {
       return this.$store.getters.g_time;
     }
   },
   methods: {
+    toggleMenuButton() {
+      let line1 = document.querySelector('.line1');
+      let line2 = document.querySelector('.line2');
+      if (line1.classList.contains('open') && line2.classList.contains('open')) {
+        line1.classList.remove('open');
+        line2.classList.remove('open');
+      } else {
+        line1.classList.add('open');
+        line2.classList.add('open');
+      }
+    },
     active (path) {
       return this.$route.path === '/products/' + path || this.$route.path === '/' + path ? true : false;
     },
@@ -103,55 +115,64 @@ export default {
   background-color: rgba(0, 0, 0, 0);
   padding: 0px;
 }
-.bg-info {
-  background-color: rgba(0, 0, 0, 0) !important;
-}
-.navbar-light .navbar-toggler {
+.navbar-toggler {
   color: rgba(0, 0, 0, 0);
   border: rgba(0, 0, 0 ,0);
 }
 button:focus {
   outline: 0px auto rgba(0, 0, 0, 0);
 }
+.mobile-logo-svg {
+  margin: 10px;
+}
+.navbar-brand {
+  padding: 0px;
+  margin: 0px;
+  height: 54px;
+}
 .hamburger {
   width: 30px;
   height: 30px;
-  /*background-color: pink;*/
   position: relative;
+  transform: rotate(0deg);
+  background-color: rgba(0, 0, 0, 0);
+  transition: .5s ease-in-out;
+  cursor: pointer;
   .line1, .line2 {
-    background-color: black;
-    width: 80%;
-    height: 1px;
+    width: 100%;
+    height: 2px;
     position: absolute;
-    left: 10%;
+    left: 0px;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+    transform-origin: center center;
   }
   .line1 {
-    top: 37%;
+    top: 35%;
   }
   .line2 {
-    top: 53%;
+    top: 55%;
   }
+}
+.line1.open {
+  transform: rotate(45deg);
+  top: 45%;
+}
+.line2.open {
+  transform: rotate(135deg);
+  top: 45%;
 }
 ul.navbar-nav  {
     width: 100%;
     height: 100vh;
     padding: 20px;
-    /*padding-top: 60px;*/
     text-align: center;
-    background-color: white;
-    .br {
-      background-color: rgb(230, 230, 230);
-      width: 100%;
-      height: 1px;
-    }
     li a {
-      color: black;
       text-decoration: none;
       font-size: 1.5em;
     }
     li {
       padding: 7px;
-      color: black;
       list-style-type: none;
     }
   }

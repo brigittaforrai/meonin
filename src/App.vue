@@ -91,10 +91,10 @@ p {
     color: gray;
   }
   a:link {
-    color: white;
+
   }
   a:visited {
-    color: white;
+
   }
   a:hover {
     color: gray;
@@ -103,9 +103,20 @@ p {
 .night .logo svg {
   fill: white;
 }
-.night .hamburger, .night .hamburger div {
+.night .mobile-logo-svg {
+  fill: black;
+}
+.night .bg-info {
+  background-color: rgb(255, 255, 255) !important;
+}
+.night .hamburger .line1, .night .hamburger .line2 {
+  background-color: black;
+}
+.night ul.navbar-nav {
   background-color: white;
-  border: 1px solid white;
+}
+.night ul.navbar-nav a,  {
+  background-color: black;
 }
 /*DAY*/
 .day ul li, .product ul li  {
@@ -116,10 +127,10 @@ p {
     color: gray;
   }
   a:link {
-    color: black;
+
   }
   a:visited {
-    color: black;
+
   }
   a:hover {
     color: gray;
@@ -128,8 +139,21 @@ p {
 .day .logo svg {
   fill: black;
 }
-.day .hamburger, .day .hamburger div {
-  background-color: black;
-  border: 1px solid black;
+.day .mobile-logo-svg {
+  fill: white;
 }
+.day .bg-info {
+  background-color: rgb(0, 0, 0) !important;
+}
+.day .hamburger .line1, .day .hamburger .line2 {
+  background-color: white;
+}
+.day ul.navbar-nav {
+  background-color: black;
+}
+.day ul.navbar-nav a,  {
+  background-color: white;
+}
+
+
 </style>
