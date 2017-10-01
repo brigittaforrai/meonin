@@ -168,14 +168,18 @@ button:focus {
 }
 ul.navbar-nav  {
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 54px -2px);
     padding: 20px;
     text-align: center;
-    li a {
+    padding-top: 15px;
+    li a.nav-link {
       text-decoration: none;
-      font-size: 1.5em;
+      font-size: 22px;
+      padding: 0px;
+      font-weight: 100;
     }
     li {
+      height: calc((100vh - 54px) / 9 - 10px);
       padding: 7px;
       list-style-type: none;
     }

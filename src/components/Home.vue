@@ -198,7 +198,7 @@ export default {
     }
     #home .description-box {
       width: 100%;
-      min-height: 50vh;
+      max-height: 50vh;
       height: auto;
       padding-top: 30px;
       padding-left: 10%;
@@ -237,7 +237,7 @@ export default {
     }
     #home .description-box {
       width: 100%;
-      min-height: 50vh;
+      max-height: 45vh;
       height: auto;
       padding-top: 40px;
       padding-left: 10%;

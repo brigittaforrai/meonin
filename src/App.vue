@@ -40,7 +40,7 @@ export default {
   text-align: left;
   font-size: 16px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
 }
 body {
   -webkit-overflow-scrolling: touch;
