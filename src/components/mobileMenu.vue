@@ -179,7 +179,7 @@ ul.navbar-nav  {
       font-weight: 100;
     }
     li {
-      height: calc((100vh - 54px) / 9 - 10px);
+      height: calc((100vh - 54px) / 9 - 14px);
       padding: 7px;
       list-style-type: none;
     }

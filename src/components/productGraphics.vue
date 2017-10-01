@@ -1,7 +1,7 @@
 <template>
   <!-- TODO day iconokat is pozicionalni, pontositani -->
   <div id="graphics" v-bind:class="time" v-bind:style="{left: position + 'px'}">
-    <!-- v-on:mouseleave.native="mouseOut()" -->
+
     <icon class="icon nomad" v-on:mouseover.native="mouseOver('nomad')" @click.native="selectProduct('nomad')" v-on:mouseleave.native="mouseOut('nomad')" :glyph="'#nomad_'+time"></icon><icon class="icon contour"  v-on:mouseover.native="mouseOver('contour')" v-on:mouseleave.native="mouseOut('contour')" @click.native="selectProduct('contour')" :glyph="'#contour_'+ time"></icon><icon class="icon sideboard" v-on:mouseover.native="mouseOver('sideboard')"  @click.native="selectProduct('sideboard')" v-on:mouseleave.native="mouseOut('sideboard')" :glyph="'#sideboard_'+ time"></icon><icon class="icon nana" v-on:mouseover.native="mouseOver('nana')" v-on:mouseleave.native="mouseOut('nana')"  @click.native="selectProduct('nana')" :glyph="'#nana_'+ time"></icon><icon class="icon uhuu" v-on:mouseover.native="mouseOver('uhuu')" v-on:mouseleave.native="mouseOut('uhuu')"  @click.native="selectProduct('uhuu')" :glyph="'#uhuu_'+ time"></icon><icon class="icon whole" v-on:mouseover.native="mouseOver('whole')" v-on:mouseleave.native="mouseOut('whole')"  @click.native="selectProduct('whole')" :glyph="'#whole_'+ time"></icon>
   </div>
 </template>
@@ -68,7 +68,6 @@ export default {
       this.$emit('select', productName);
     },
     mouseOut (productName) {
-      console.log(this.selected, productName);
       let icons = document.querySelectorAll('.icon');
       if (this.selected === '') {
         icons.forEach((icon) => {
@@ -125,6 +124,9 @@ export default {
     width: 100vw;
     height: 130px;
   }
+  #graphics .inactive {
+    opacity: 1;
+  }
 }
 
 @media only screen and (min-width: 321px) and (max-width: 568px) {
@@ -140,6 +142,9 @@ export default {
     position: static;
     width: 100vw;
     height: 200px;
+  }
+  #graphics .inactive {
+    opacity: 1;
   }
 }
 </style>
