@@ -34,6 +34,7 @@ export default {
       logo,
       plus,
       description: {},
+      title: '',
       position: 0
     }
   },
@@ -74,6 +75,7 @@ export default {
     },
     productInfo: function(productName) {
       this.description = this.$store.getters.g_productDesc;
+      this.title = this.description.title;
     },
     setLanguage: function() {
       this.$store.commit('m_changeLanguage');
