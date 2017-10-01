@@ -107,11 +107,12 @@ export default {
 
 <style scoped lang="postcss">
 #mobile-menu {
-  position: fixed;
+  position: sticky;
   top: 0px;
   left: 0px;
   width: 100%;
   z-index: 100;
+  height: 54px;
 }
 .navbar {
   width: 100%;

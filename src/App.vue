@@ -1,10 +1,11 @@
 <template>
   <div id="app">
+    <mobile-menu :home="home"></mobile-menu>
     <transition name="component-fade" mode="out-in">
       <router-view></router-view>
     </transition>
     <side-menu :home="home"></side-menu>
-    <mobile-menu :home="home"></mobile-menu>
+
   </div>
 </template>
 
@@ -40,10 +41,9 @@ export default {
   font-size: 16px;
   overflow-x: hidden;
   overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
 }
 body {
-  /*overflow-scrolling: touch;*/
+  -webkit-overflow-scrolling: touch;
 }
 html, body {
   height: 100%;

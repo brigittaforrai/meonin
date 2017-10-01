@@ -188,7 +188,7 @@ export default {
   }
   @media only screen and (max-width: 320px) {
     #home {
-      height: 100%;
+      height: calc(100% - 54px);
       overflow: auto;
       position: relative;
       display: flex;
@@ -200,7 +200,7 @@ export default {
       width: 100%;
       min-height: 50vh;
       height: auto;
-      padding-top: 80px;
+      padding-top: 30px;
       padding-left: 10%;
       padding-bottom: 20px;
       padding-right: 10%;
@@ -227,7 +227,7 @@ export default {
   }
   @media only screen and (min-width: 321px) and (max-width: 568px) {
     #home {
-      height: 100%;
+      height: calc(100% - 54px);
       overflow: auto;
       position: relative;
       display: flex;
@@ -239,7 +239,7 @@ export default {
       width: 100%;
       min-height: 50vh;
       height: auto;
-      padding-top: 100px;
+      padding-top: 40px;
       padding-left: 10%;
       padding-bottom: 50px;
       padding-right: 10%;
